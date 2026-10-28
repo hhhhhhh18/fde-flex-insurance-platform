@@ -1,0 +1,182 @@
+{
+  "runId": "cmvrptycz0000lifc355v9i5d",
+  "datasetLabel": "operational",
+  "startedAt": "2026-10-28T06:10:37.093Z",
+  "finishedAt": "2026-10-28T06:10:37.520Z",
+  "durationMs": 427,
+  "checksRun": 12,
+  "summary": {
+    "totalFindings": 8,
+    "bySeverity": {
+      "HIGH": 2,
+      "CRITICAL": 6
+    },
+    "byCategory": {
+      "data-quality": 1,
+      "date": 1,
+      "lifecycle": 2,
+      "overlap": 1,
+      "pricing": 1,
+      "coverage": 1,
+      "renewal": 1
+    },
+    "byIssueCode": {
+      "DQ_RISK_INFO_MISSING": 1,
+      "DATE_ORDER_INVALID": 1,
+      "LIFECYCLE_INVALID": 2,
+      "POL_OVERLAP": 1,
+      "PRM_FORMULA_MISMATCH": 1,
+      "COV_LIMIT_EXCEEDED": 1,
+      "RNW_INVALID_RELATIONSHIP": 1
+    },
+    "status": "FAIL"
+  },
+  "findings": [
+    {
+      "issueCode": "DQ_RISK_INFO_MISSING",
+      "entityType": "InsuredAsset",
+      "entityRef": "AST-2026-00024",
+      "category": "data-quality",
+      "severity": "HIGH",
+      "message": "Risk information is incomplete (roof_condition) but the risk was priced as eligible.",
+      "expectedValue": "AWAITING_INFORMATION decision until the questionnaire is complete",
+      "observedValue": "eligible quotes: QTE-2026-00009; active policies: POL-2026-00005",
+      "remediation": "Place the case on hold, collect the missing risk data, then re-evaluate.",
+      "findingId": "DQ_RISK_INFO_MISSING:AST-2026-00024:0"
+    },
+    {
+      "issueCode": "DATE_ORDER_INVALID",
+      "entityType": "Policy",
+      "entityRef": "POL-2026-00007",
+      "category": "date",
+      "severity": "CRITICAL",
+      "message": "Policy end date is not after its start date.",
+      "expectedValue": "effectiveTo > 2025-03-21",
+      "observedValue": "2025-02-19",
+      "remediation": "Correct the term end date and re-issue the schedule.",
+      "findingId": "DATE_ORDER_INVALID:POL-2026-00007:1"
+    },
+    {
+      "issueCode": "LIFECYCLE_INVALID",
+      "entityType": "Policy",
+      "entityRef": "POL-2026-00011",
+      "category": "lifecycle",
+      "severity": "CRITICAL",
+      "message": "Policy bound by APPLICANT without a recorded underwriting approval.",
+      "expectedValue": "APPROVED underwriting decision by an authorized reviewer",
+      "observedValue": "issuedByRole=APPLICANT, underwriting=PENDING",
+      "remediation": "Escalate to a risk reviewer; reverse the binding if approval is not granted.",
+      "findingId": "LIFECYCLE_INVALID:POL-2026-00011:2"
+    },
+    {
+      "issueCode": "LIFECYCLE_INVALID",
+      "entityType": "Policy",
+      "entityRef": "POL-2026-00011",
+      "category": "lifecycle",
+      "severity": "CRITICAL",
+      "message": "Policy is ACTIVE while premium is unpaid.",
+      "expectedValue": "paymentStatus PAID before activation",
+      "observedValue": "UNPAID",
+      "remediation": "Suspend the policy until payment is received, or record the payment reference.",
+      "findingId": "LIFECYCLE_INVALID:POL-2026-00011:3"
+    },
+    {
+      "issueCode": "POL_OVERLAP",
+      "entityType": "Policy",
+      "entityRef": "POL-2026-00012",
+      "category": "overlap",
+      "severity": "CRITICAL",
+      "message": "Coverage overlaps POL-2026-00002 for asset AST-2026-00011; the overlap is not explained by a recorded replacement.",
+      "expectedValue": "no live coverage overlapping 2026-04-06..2027-04-06",
+      "observedValue": "POL-2026-00002 and POL-2026-00012 both live",
+      "remediation": "Cancel or amend one policy and record the reason as an endorsement.",
+      "findingId": "POL_OVERLAP:POL-2026-00012:4"
+    },
+    {
+      "issueCode": "PRM_FORMULA_MISMATCH",
+      "entityType": "Quote",
+      "entityRef": "QTE-2026-00002",
+      "category": "pricing",
+      "severity": "CRITICAL",
+      "message": "Stored gross premium differs from the deterministic pricing formula.",
+      "expectedValue": "375.65",
+      "observedValue": "394.43",
+      "remediation": "Re-run the pricing engine; do not hand-edit premium values.",
+      "findingId": "PRM_FORMULA_MISMATCH:QTE-2026-00002:5"
+    },
+    {
+      "issueCode": "COV_LIMIT_EXCEEDED",
+      "entityType": "Quote",
+      "entityRef": "QTE-2026-00026",
+      "category": "coverage",
+      "severity": "CRITICAL",
+      "message": "Coverage PRP-FIR limit 2500000.00 is outside the permitted range.",
+      "expectedValue": "50000..2000000",
+      "observedValue": "2500000.00",
+      "remediation": "Reduce the limit to the configured maximum or refer for a bespoke facility.",
+      "findingId": "COV_LIMIT_EXCEEDED:QTE-2026-00026:6"
+    },
+    {
+      "issueCode": "RNW_INVALID_RELATIONSHIP",
+      "entityType": "Renewal",
+      "entityRef": "RNW-2026-00001",
+      "category": "renewal",
+      "severity": "HIGH",
+      "message": "Renewal exists for cancelled policy POL-2026-00001.",
+      "expectedValue": "renewal only for ACTIVE or EXPIRED policies",
+      "observedValue": "CANCELLED",
+      "remediation": "Withdraw the renewal offer and document the case.",
+      "findingId": "RNW_INVALID_RELATIONSHIP:RNW-2026-00001:7"
+    }
+  ],
+  "groundTruth": {
+    "labels": [],
+    "detectedCount": 0,
+    "missedCount": 0,
+    "unlabelledFindings": [
+      {
+        "issueCode": "DQ_RISK_INFO_MISSING",
+        "entityRef": "AST-2026-00024",
+        "message": "Risk information is incomplete (roof_condition) but the risk was priced as eligible."
+      },
+      {
+        "issueCode": "DATE_ORDER_INVALID",
+        "entityRef": "POL-2026-00007",
+        "message": "Policy end date is not after its start date."
+      },
+      {
+        "issueCode": "LIFECYCLE_INVALID",
+        "entityRef": "POL-2026-00011",
+        "message": "Policy bound by APPLICANT without a recorded underwriting approval."
+      },
+      {
+        "issueCode": "LIFECYCLE_INVALID",
+        "entityRef": "POL-2026-00011",
+        "message": "Policy is ACTIVE while premium is unpaid."
+      },
+      {
+        "issueCode": "POL_OVERLAP",
+        "entityRef": "POL-2026-00012",
+        "message": "Coverage overlaps POL-2026-00002 for asset AST-2026-00011; the overlap is not explained by a recorded replacement."
+      },
+      {
+        "issueCode": "PRM_FORMULA_MISMATCH",
+        "entityRef": "QTE-2026-00002",
+        "message": "Stored gross premium differs from the deterministic pricing formula."
+      },
+      {
+        "issueCode": "COV_LIMIT_EXCEEDED",
+        "entityRef": "QTE-2026-00026",
+        "message": "Coverage PRP-FIR limit 2500000.00 is outside the permitted range."
+      },
+      {
+        "issueCode": "RNW_INVALID_RELATIONSHIP",
+        "entityRef": "RNW-2026-00001",
+        "message": "Renewal exists for cancelled policy POL-2026-00001."
+      }
+    ],
+    "precision": 0,
+    "findingsLinked": 0,
+    "recall": 1
+  }
+}

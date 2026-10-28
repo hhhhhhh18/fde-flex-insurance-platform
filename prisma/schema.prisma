@@ -1,0 +1,516 @@
+// Insurance Operations & Risk Evaluation Platform - relational schema
+// All data is synthetic. Money is stored as NUMERIC(14,2); rating factors as NUMERIC(10,6).
+
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "postgresql"
+  url      = env("DATABASE_URL")
+}
+
+/// Roles used by the server-side authorization layer.
+enum Role {
+  APPLICANT
+  OPERATIONS_ANALYST
+  RISK_REVIEWER
+  ADMIN
+}
+
+enum ProductCategory {
+  MOTOR
+  PROPERTY
+  CYBER
+  LIABILITY
+}
+
+enum ProductStatus {
+  DRAFT
+  ACTIVE
+  RETIRED
+}
+
+enum AssetType {
+  VEHICLE
+  BUILDING
+  SOLAR_PLANT
+  IT_INFRASTRUCTURE
+  MACHINERY
+}
+
+enum AssetCondition {
+  EXCELLENT
+  GOOD
+  FAIR
+  POOR
+}
+
+enum UsageType {
+  PERSONAL
+  COMMERCIAL
+}
+
+enum CoverageType {
+  COLLISION
+  THEFT
+  FIRE
+  FLOOD
+  EARTHQUAKE
+  GENERAL_LIABILITY
+  BUSINESS_INTERRUPTION
+  CYBER_INCIDENT
+}
+
+enum QuoteStatus {
+  DRAFT
+  EVALUATED
+  ACCEPTED
+  EXPIRED
+  SUPERSEDED
+}
+
+enum QuoteDecision {
+  ELIGIBLE
+  INELIGIBLE
+  REFERRED
+  AWAITING_INFORMATION
+}
+
+enum PolicyStatus {
+  PENDING_PAYMENT
+  ACTIVE
+  CANCELLED
+  EXPIRED
+}
+
+enum PaymentStatus {
+  UNPAID
+  PAID
+  REFUNDED
+}
+
+enum EndorsementType {
+  COVERAGE_UPDATE
+  LIMIT_CHANGE
+  ASSET_UPDATE
+}
+
+enum EndorsementStatus {
+  PENDING
+  APPROVED
+  APPLIED
+  REJECTED
+}
+
+enum RenewalStatus {
+  OFFERED
+  ACCEPTED
+  DECLINED
+  EXPIRED
+}
+
+enum UnderwritingStatus {
+  PENDING
+  APPROVED
+  DECLINED
+  INFORMATION_REQUESTED
+}
+
+enum Severity {
+  INFO
+  LOW
+  MEDIUM
+  HIGH
+  CRITICAL
+}
+
+/// Metric a configurable risk factor is evaluated against.
+enum RiskMetric {
+  ASSET_AGE_YEARS
+  ASSET_VALUE
+  CREDIT_BAND
+  OCCUPATION_CLASS
+  CLAIMS_HISTORY_5Y
+  ASSET_CONDITION
+  USAGE_TYPE
+}
+
+enum ComparisonOperator {
+  GTE
+  LTE
+  EQ
+  IN
+}
+
+/// Atomic, zero-padded counter source for immutable business identifiers.
+model Counter {
+  key       String   @id
+  value     Int      @default(0)
+  updatedAt DateTime @updatedAt
+}
+
+model Applicant {
+  id            String    @id @default(cuid())
+  reference     String    @unique
+  firstName     String
+  lastName      String
+  email         String    @unique
+  phone         String
+  dateOfBirth   DateTime  @db.Date
+  country       String    @db.VarChar(2)
+  region        String
+  occupation    String
+  occupationClass Int     @db.SmallInt
+  annualIncome  Decimal   @db.Decimal(14, 2)
+  creditBand    String    @db.VarChar(2)
+  createdAt     DateTime  @default(now())
+  updatedAt     DateTime  @updatedAt
+
+  assets   InsuredAsset[]
+  quotes   Quote[]
+  policies Policy[]
+
+  @@index([lastName, firstName])
+  @@index([region])
+}
+
+model InsuredAsset {
+  id               String         @id @default(cuid())
+  reference        String         @unique
+  applicantId      String
+  assetType        AssetType
+  description      String
+  yearBuilt        Int            @db.SmallInt
+  purchaseValue    Decimal        @db.Decimal(14, 2)
+  currentValue     Decimal        @db.Decimal(14, 2)
+  condition        AssetCondition
+  usage            UsageType
+  claimsHistory5y  Int            @default(0) @db.SmallInt
+  region           String
+  /// Deliberate data-quality flag: false means risk information is incomplete.
+  riskDataComplete Boolean        @default(true)
+  missingRiskField String?
+  createdAt        DateTime       @default(now())
+  updatedAt        DateTime       @updatedAt
+
+  applicant Applicant @relation(fields: [applicantId], references: [id], onDelete: Restrict)
+  quotes    Quote[]
+  policies  Policy[]
+
+  @@index([applicantId])
+  @@index([assetType])
+}
+
+model Product {
+  id               String          @id @default(cuid())
+  code             String          @unique
+  name             String
+  category         ProductCategory
+  status           ProductStatus   @default(ACTIVE)
+  description      String
+  /// Base rate applied to exposure units (premium per 1,000 of limit).
+  baseRate         Decimal         @db.Decimal(10, 6)
+  minimumPremium   Decimal         @db.Decimal(14, 2)
+  maxCoverageLimit Decimal         @db.Decimal(14, 2)
+  /// Gross premium above this value requires underwriting review.
+  referralThreshold Decimal        @db.Decimal(14, 2)
+  /// Coverage above this limit requires underwriting review even when otherwise eligible.
+  autoBindLimit    Decimal         @db.Decimal(14, 2)
+  minAssetValue    Decimal         @db.Decimal(14, 2)
+  maxAssetValue    Decimal         @db.Decimal(14, 2)
+  minApplicantAge  Int             @db.SmallInt
+  maxApplicantAge  Int             @db.SmallInt
+  effectiveFrom    DateTime        @db.Date
+  effectiveTo      DateTime?       @db.Date
+  pricingVersion   String
+  rulesVersion     String
+  createdAt        DateTime        @default(now())
+  updatedAt        DateTime        @updatedAt
+
+  coverageOptions CoverageOption[]
+  riskFactors     RiskFactor[]
+  quotes          Quote[]
+  policies        Policy[]
+
+  @@index([category, status])
+}
+
+model CoverageOption {
+  id             String       @id @default(cuid())
+  productId      String
+  code           String
+  name           String
+  coverageType   CoverageType
+  /// Rating factor applied to the coverage limit.
+  rateFactor     Decimal      @db.Decimal(10, 6)
+  minLimit       Decimal      @db.Decimal(14, 2)
+  maxLimit       Decimal      @db.Decimal(14, 2)
+  defaultLimit   Decimal      @db.Decimal(14, 2)
+  required       Boolean      @default(false)
+  active         Boolean      @default(true)
+  createdAt      DateTime     @default(now())
+
+  product        Product      @relation(fields: [productId], references: [id], onDelete: Restrict)
+  quoteCoverages QuoteCoverage[]
+
+  @@unique([productId, code])
+  @@index([productId])
+}
+
+/// Configurable rating/referral factor. productId null = applies to all products.
+model RiskFactor {
+  id               String              @id @default(cuid())
+  productId        String?
+  code             String              @unique
+  label            String
+  metric           RiskMetric
+  operator         ComparisonOperator
+  thresholdValue   Decimal?            @db.Decimal(14, 4)
+  thresholdText    String?
+  /// Multiplicative rating factor (1.000000 = neutral).
+  multiplier       Decimal             @db.Decimal(10, 6)
+  triggersReferral Boolean             @default(false)
+  explanation      String
+  active           Boolean             @default(true)
+
+  product         Product?          @relation(fields: [productId], references: [id], onDelete: Restrict)
+  appliedToQuotes QuoteRiskFactor[]
+
+  @@index([productId, metric])
+}
+
+model Quote {
+  id               String        @id @default(cuid())
+  reference        String        @unique
+  applicantId      String
+  productId        String
+  assetId          String?
+  status           QuoteStatus   @default(DRAFT)
+  decision         QuoteDecision
+  decisionSummary  String
+  referralReasons  Json          @default("[]")
+  /// Full pricing breakdown snapshot (base, factors, intermediate steps, rounding).
+  pricingBreakdown Json
+  coverageLimit    Decimal       @db.Decimal(14, 2)
+  netPremium       Decimal       @db.Decimal(14, 2)
+  grossPremium     Decimal       @db.Decimal(14, 2)
+  factorProduct    Decimal       @db.Decimal(10, 6)
+  pricingVersion   String
+  rulesVersion     String
+  evaluatedAt      DateTime      @default(now())
+  expiresAt        DateTime
+  createdAt        DateTime      @default(now())
+  updatedAt        DateTime      @updatedAt
+
+  applicant  Applicant         @relation(fields: [applicantId], references: [id], onDelete: Restrict)
+  product    Product          @relation(fields: [productId], references: [id], onDelete: Restrict)
+  asset      InsuredAsset?    @relation(fields: [assetId], references: [id], onDelete: Restrict)
+  coverages  QuoteCoverage[]
+  riskFactors QuoteRiskFactor[]
+  policy     Policy?
+  underwriting UnderwritingDecision[]
+
+  @@index([decision, status])
+  @@index([applicantId])
+  @@index([productId])
+}
+
+model QuoteCoverage {
+  id              String         @id @default(cuid())
+  quoteId         String
+  coverageOptionId String
+  requestedLimit  Decimal        @db.Decimal(14, 2)
+  approvedLimit   Decimal        @db.Decimal(14, 2)
+  rateFactor      Decimal        @db.Decimal(10, 6)
+  limitViolation  Boolean        @default(false)
+
+  quote          Quote          @relation(fields: [quoteId], references: [id], onDelete: Cascade)
+  coverageOption CoverageOption @relation(fields: [coverageOptionId], references: [id], onDelete: Restrict)
+
+  @@unique([quoteId, coverageOptionId])
+}
+
+/// Bridge: which risk factors were applied to a quote and the observed value.
+model QuoteRiskFactor {
+  id           String   @id @default(cuid())
+  quoteId      String
+  riskFactorId String
+  observedValue String
+  multiplier   Decimal  @db.Decimal(10, 6)
+  referred     Boolean  @default(false)
+
+  quote      Quote      @relation(fields: [quoteId], references: [id], onDelete: Cascade)
+  riskFactor RiskFactor @relation(fields: [riskFactorId], references: [id], onDelete: Restrict)
+
+  @@unique([quoteId, riskFactorId])
+}
+
+model Policy {
+  id               String        @id @default(cuid())
+  reference        String        @unique
+  quoteId          String        @unique
+  applicantId      String
+  productId        String
+  assetId          String?
+  status           PolicyStatus  @default(PENDING_PAYMENT)
+  paymentStatus    PaymentStatus @default(UNPAID)
+  effectiveFrom    DateTime      @db.Date
+  effectiveTo      DateTime      @db.Date
+  premium          Decimal       @db.Decimal(14, 2)
+  coverageLimit    Decimal       @db.Decimal(14, 2)
+  issuedAt         DateTime      @default(now())
+  issuedByRole     Role
+  issuedBy         String
+  cancelledAt      DateTime?
+  cancellationReason String?
+  /// Optimistic concurrency / lifecycle version counter.
+  version          Int           @default(1)
+  createdAt        DateTime      @default(now())
+  updatedAt        DateTime      @updatedAt
+
+  quote        Quote        @relation(fields: [quoteId], references: [id], onDelete: Restrict)
+  applicant    Applicant    @relation(fields: [applicantId], references: [id], onDelete: Restrict)
+  product      Product      @relation(fields: [productId], references: [id], onDelete: Restrict)
+  asset        InsuredAsset? @relation(fields: [assetId], references: [id], onDelete: Restrict)
+  endorsements Endorsement[]
+  renewals     Renewal[]    @relation("PolicyRenewals")
+  renewedFrom  Renewal?     @relation("RenewalResult")
+
+  @@index([status])
+  @@index([applicantId])
+  @@index([assetId, effectiveFrom])
+}
+
+model Endorsement {
+  id             String            @id @default(cuid())
+  reference      String            @unique
+  policyId       String
+  type           EndorsementType
+  status         EndorsementStatus @default(PENDING)
+  effectiveDate  DateTime          @db.Date
+  reason         String
+  requestedChanges Json
+  premiumDelta   Decimal           @db.Decimal(14, 2) @default(0)
+  approvedBy     String?
+  approvedByRole Role?
+  decidedAt      DateTime?
+  rejectionReason String?
+  createdAt      DateTime          @default(now())
+  updatedAt      DateTime          @updatedAt
+
+  policy Policy @relation(fields: [policyId], references: [id], onDelete: Restrict)
+
+  @@index([policyId, status])
+}
+
+model Renewal {
+  id               String        @id @default(cuid())
+  reference        String        @unique
+  policyId         String
+  status           RenewalStatus @default(OFFERED)
+  offeredPremium   Decimal       @db.Decimal(14, 2)
+  effectiveFrom    DateTime      @db.Date
+  effectiveTo      DateTime      @db.Date
+  offerExpiresAt   DateTime      @db.Date
+  acceptedAt       DateTime?
+  declinedAt       DateTime?
+  declineReason    String?
+  resultingPolicyId String?      @unique
+  createdAt        DateTime      @default(now())
+  updatedAt        DateTime      @updatedAt
+
+  policy          Policy  @relation("PolicyRenewals", fields: [policyId], references: [id], onDelete: Restrict)
+  resultingPolicy Policy? @relation("RenewalResult", fields: [resultingPolicyId], references: [id], onDelete: Restrict)
+
+  @@index([policyId, status])
+}
+
+model UnderwritingDecision {
+  id           String             @id @default(cuid())
+  reference    String             @unique
+  quoteId      String
+  status       UnderwritingStatus @default(PENDING)
+  triggerCodes Json               @default("[]")
+  summary      String
+  reviewer     String?
+  reviewerRole Role?
+  authorityLimit Decimal?         @db.Decimal(14, 2)
+  notes        String?
+  requestedInfo String?
+  decidedAt    DateTime?
+  createdAt    DateTime           @default(now())
+  updatedAt    DateTime           @updatedAt
+
+  quote Quote @relation(fields: [quoteId], references: [id], onDelete: Restrict)
+
+  @@index([status, createdAt])
+}
+
+/// Append-only audit trail. Never updated or deleted by application code.
+model AuditEvent {
+  id         String   @id @default(cuid())
+  entityType String
+  entityId   String
+  entityRef  String?
+  action     String
+  actorRole  Role
+  actorId    String
+  summary    String
+  payload    Json     @default("{}")
+  createdAt  DateTime @default(now())
+
+  @@index([entityType, entityId])
+  @@index([createdAt])
+}
+
+/// A validation/detection pass over the dataset.
+model ValidationRun {
+  id            String   @id @default(cuid())
+  startedAt     DateTime @default(now())
+  finishedAt    DateTime?
+  datasetLabel  String
+  checksRun     Int      @default(0)
+  findingsCount Int      @default(0)
+  status        String   @default("RUNNING")
+  summary       Json?
+
+  findings ValidationFinding[]
+}
+
+/// Detector output. Deliberately has no foreign key to ground truth.
+model ValidationFinding {
+  id            String   @id @default(cuid())
+  runId         String
+  issueCode     String
+  entityType    String
+  entityRef     String
+  category      String
+  severity      Severity
+  message       String
+  expectedValue String?
+  observedValue String?
+  remediation   String
+
+  run ValidationRun @relation(fields: [runId], references: [id], onDelete: Cascade)
+
+  @@index([runId, severity])
+  @@index([issueCode])
+}
+
+/// Ground-truth label store, written only by the generator and read only by evaluation/reporting.
+/// The detector and rules engine must never query this table.
+model AnomalyLabel {
+  id            String   @id @default(cuid())
+  datasetLabel  String
+  anomalyCode   String
+  entityType    String
+  entityRef     String
+  expectedIssue String
+  expectedDecision String?
+  description   String
+  createdAt     DateTime @default(now())
+
+  @@unique([datasetLabel, anomalyCode, entityRef])
+  @@index([datasetLabel])
+}

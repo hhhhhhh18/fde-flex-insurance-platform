@@ -1,0 +1,15 @@
+reference,firstName,lastName,email,phone,dateOfBirth,country,region,occupation,occupationClass,annualIncome,creditBand
+APP-2026-00001,Aisha,Nakamura,aisha.nakamura.1@example-insure.test,+44 20 7946 1001,1996-12-12,GB,NA-EAST,Software engineer,1,70820,E
+APP-2026-00002,Lena,Fischer,lena.fischer.2@example-insure.test,+44 20 7946 1002,2000-02-15,GB,NA-WEST,Teacher,1,44690,A
+APP-2026-00003,Ravi,Costa,ravi.costa.3@example-insure.test,+44 20 7946 1003,1968-09-16,GB,MEA,Software engineer,1,63870,D
+APP-2026-00004,Diego,Rao,diego.rao.4@example-insure.test,+44 20 7946 1004,1999-10-10,GB,EU-NORTH,Software engineer,1,126670,B
+APP-2026-00005,Ines,Rao,ines.rao.5@example-insure.test,+44 20 7946 1005,1961-07-06,GB,APAC,Accountant,1,132820,A
+APP-2026-00006,Ravi,Petrov,ravi.petrov.6@example-insure.test,+44 20 7946 1006,1986-10-28,GB,EU-WEST,Construction supervisor,3,176540,D
+APP-2026-00007,Diego,Kapoor,diego.kapoor.7@example-insure.test,+44 20 7946 1007,1967-03-08,GB,NA-EAST,Seasonal labourer,4,151100,B
+APP-2026-00008,Diego,Lindqvist,diego.lindqvist.8@example-insure.test,+44 20 7946 1008,1998-11-28,GB,NA-EAST,Seasonal labourer,4,158520,B
+APP-2026-00009,Omar,Novak,omar.novak.9@example-insure.test,+44 20 7946 1009,1975-03-28,GB,EU-SOUTH,Accountant,1,161900,B
+APP-2026-00010,Mateo,Mensah,mateo.mensah.10@example-insure.test,+44 20 7946 1010,1996-08-18,GB,MEA,Electrician,3,31150,D
+APP-2026-00011,Sofia,Petrov,sofia.petrov.11@example-insure.test,+44 20 7946 1011,1998-12-01,GB,MEA,Construction supervisor,3,30770,A
+APP-2026-00012,Zara,Kapoor,zara.kapoor.12@example-insure.test,+44 20 7946 1012,1987-11-09,GB,NA-WEST,Electrician,3,109410,A
+APP-2026-00013,Nadia,Duarte,nadia.duarte.13@example-insure.test,+44 20 7946 1013,1988-03-04,GB,EU-WEST,Teacher,1,61150,E
+APP-2026-00014,Viktor,Sato,viktor.sato.14@example-insure.test,+44 20 7946 1014,1966-01-14,GB,EU-NORTH,Freelance contractor,4,130740,C

@@ -1,0 +1,24 @@
+[
+  {
+    "approvedByRole": "ADMIN",
+    "effectiveDate": "2026-10-01",
+    "policyRef": "POL-2026-00002",
+    "premiumDelta": "999.69",
+    "reason": "Insured requested increased limit following asset revaluation.",
+    "reference": "END-2026-00001",
+    "rejectionReason": null,
+    "status": "APPLIED",
+    "type": "LIMIT_CHANGE"
+  },
+  {
+    "approvedByRole": "ADMIN",
+    "effectiveDate": "2026-10-01",
+    "policyRef": "POL-2026-00010",
+    "premiumDelta": "333.74",
+    "reason": "Insured requested increased limit following asset revaluation.",
+    "reference": "END-2026-00002",
+    "rejectionReason": null,
+    "status": "APPLIED",
+    "type": "LIMIT_CHANGE"
+  }
+]

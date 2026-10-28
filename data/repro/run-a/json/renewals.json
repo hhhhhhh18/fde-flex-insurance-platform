@@ -1,0 +1,13 @@
+[
+  {
+    "declineReason": null,
+    "effectiveFrom": "2027-06-18",
+    "effectiveTo": "2028-06-18",
+    "offeredPremium": "394.43",
+    "offerExpiresAt": "2026-10-31",
+    "policyRef": "POL-2026-00001",
+    "reference": "RNW-2026-00001",
+    "resultingPolicyRef": null,
+    "status": "OFFERED"
+  }
+]

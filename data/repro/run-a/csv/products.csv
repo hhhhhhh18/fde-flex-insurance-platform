@@ -1,0 +1,5 @@
+code,name,category,status,description,baseRate,minimumPremium,maxCoverageLimit,referralThreshold,autoBindLimit,minAssetValue,maxAssetValue,minApplicantAge,maxApplicantAge,effectiveFrom,effectiveTo,pricingVersion,rulesVersion
+CYB-GUARD,Cyber Guard SME,CYBER,ACTIVE,Cyber incident response and business interruption cover for small and mid-size enterprises.,2.4,300,1000000,15000,400000,10000,1500000,18,85,2024-06-01,,cyber-2026.3,rules-2026.1
+LIA-FLEX,Professional Liability Flex,LIABILITY,ACTIVE,Professional indemnity cover available with or without a scheduled asset.,1.2,200,1500000,10000,500000,0,3000000,18,85,2024-01-01,,liability-2026.1,rules-2026.1
+MOT-FLEET,Fleet Flex Motor,MOTOR,ACTIVE,"Commercial and personal vehicle cover with collision, theft and third-party liability.",3.2,180,500000,12000,250000,5000,300000,18,80,2024-01-01,,motor-2026.1,rules-2026.1
+PROP-SHIELD,Property Shield Commercial,PROPERTY,ACTIVE,"Commercial property cover for buildings, machinery and solar assets.",1.85,240,2000000,18000,750000,20000,3000000,21,85,2024-03-01,,property-2026.2,rules-2026.1

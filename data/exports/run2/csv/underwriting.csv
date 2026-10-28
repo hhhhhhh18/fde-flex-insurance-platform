@@ -1,0 +1,12 @@
+reference,quoteRef,status,triggerCodes,summary,reviewerRole,decidedAt
+UWD-2026-00001,QTE-2026-00001,PENDING,"[""R_COVERAGE_ABOVE_AUTOBIND"",""R_FACTOR_CREDIT_E""]",Total coverage 1170000.00 exceeds the auto-bind limit 750000. Credit band E triggered a referral (Lowest credit band is not eligible for straight-through processing.).,,
+UWD-2026-00002,QTE-2026-00004,APPROVED,"[""R_COVERAGE_ABOVE_AUTOBIND""]",Total coverage 575000.00 exceeds the auto-bind limit 400000.,RISK_REVIEWER,2026-10-27
+UWD-2026-00003,QTE-2026-00005,PENDING,"[""R_FACTOR_CREDIT_E""]",Credit band E triggered a referral (Lowest credit band is not eligible for straight-through processing.).,,
+UWD-2026-00004,QTE-2026-00011,APPROVED,"[""R_FACTOR_CREDIT_E""]",Credit band E triggered a referral (Lowest credit band is not eligible for straight-through processing.).,RISK_REVIEWER,2026-10-27
+UWD-2026-00005,QTE-2026-00012,APPROVED,"[""R_FACTOR_CREDIT_E""]",Credit band E triggered a referral (Lowest credit band is not eligible for straight-through processing.).,RISK_REVIEWER,2026-10-27
+UWD-2026-00006,QTE-2026-00016,PENDING,"[""R_FACTOR_CREDIT_E""]",Credit band E triggered a referral (Lowest credit band is not eligible for straight-through processing.).,,
+UWD-2026-00007,QTE-2026-00017,PENDING,"[""R_COVERAGE_ABOVE_AUTOBIND""]",Total coverage 263000.00 exceeds the auto-bind limit 250000.,,
+UWD-2026-00008,QTE-2026-00019,INFORMATION_REQUESTED,"[""R_FACTOR_CLAIMS_3"",""R_CLAIMS_HISTORY""]",Three or more claims in 5 years triggered a referral (Persistent claims history requires human underwriting judgement.). Claims history of 4 claims in 5 years requires review.,RISK_REVIEWER,2026-10-27
+UWD-2026-00009,QTE-2026-00020,PENDING,"[""R_COVERAGE_ABOVE_AUTOBIND"",""R_FACTOR_CLAIMS_3"",""R_CLAIMS_HISTORY""]",Total coverage 450000.00 exceeds the auto-bind limit 400000. Three or more claims in 5 years triggered a referral (Persistent claims history requires human underwriting judgement.). Claims history of 4 claims in 5 years requires review.,,
+UWD-2026-00010,QTE-2026-00022,APPROVED,"[""R_COVERAGE_ABOVE_AUTOBIND""]",Total coverage 273000.00 exceeds the auto-bind limit 250000.,RISK_REVIEWER,2026-10-27
+UWD-2026-00011,QTE-2026-00023,PENDING,"[""R_COVERAGE_ABOVE_AUTOBIND"",""R_FACTOR_CLAIMS_3"",""R_CLAIMS_HISTORY""]",Total coverage 440000.00 exceeds the auto-bind limit 400000. Three or more claims in 5 years triggered a referral (Persistent claims history requires human underwriting judgement.). Claims history of 4 claims in 5 years requires review.,,

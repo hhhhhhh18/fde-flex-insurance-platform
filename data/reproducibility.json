@@ -1,0 +1,10 @@
+{
+  "match": true,
+  "checkedAt": "2026-10-28T06:10:07.292Z",
+  "detail": "11 checksums and all deterministic files match byte-for-byte.",
+  "directories": [
+    "data/repro/run-a",
+    "data/repro/run-b"
+  ],
+  "datasetChecksum": "b2f5dc44ce293035f3f7573ae36060d4cf07bd3a1796007fb705e3efad956706"
+}

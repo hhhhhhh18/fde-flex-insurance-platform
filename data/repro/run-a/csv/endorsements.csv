@@ -1,0 +1,3 @@
+reference,policyRef,type,status,effectiveDate,reason,premiumDelta,approvedByRole,rejectionReason
+END-2026-00001,POL-2026-00002,LIMIT_CHANGE,APPLIED,2026-10-01,Insured requested increased limit following asset revaluation.,999.69,ADMIN,
+END-2026-00002,POL-2026-00010,LIMIT_CHANGE,APPLIED,2026-10-01,Insured requested increased limit following asset revaluation.,333.74,ADMIN,

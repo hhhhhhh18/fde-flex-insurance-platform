@@ -1,0 +1,100 @@
+@import "tailwindcss";
+
+/*
+  Design tokens for the FDE Flex operations console.
+  Semantic names only - components never reference raw hex values.
+*/
+@theme {
+  --color-background: #f4f6f9;
+  --color-surface: #ffffff;
+  --color-surface-muted: #f8fafc;
+  --color-foreground: #0f172a;
+  --color-muted: #64748b;
+  --color-border: #e2e8f0;
+  --color-primary: #1e3a8a;
+  --color-primary-soft: #eef2ff;
+  --color-primary-foreground: #ffffff;
+  --color-accent: #0f766e;
+  --color-accent-soft: #ecfdf5;
+  --color-success: #15803d;
+  --color-success-soft: #f0fdf4;
+  --color-warning: #b45309;
+  --color-warning-soft: #fffbeb;
+  --color-danger: #b91c1c;
+  --color-danger-soft: #fef2f2;
+  --color-info: #0369a1;
+  --color-info-soft: #f0f9ff;
+
+  /* Navigation surfaces */
+  --color-sidebar: #0b1220;
+  --color-sidebar-border: #1e293b;
+  --color-sidebar-text: #cbd5e1;
+  --color-sidebar-muted: #64748b;
+  --color-sidebar-active: #1e293b;
+
+  --radius-card: 0.875rem;
+
+  --font-sans: ui-sans-serif, system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+  --font-mono: ui-monospace, SFMono-Regular, "SF Mono", Menlo, Consolas, "Liberation Mono", monospace;
+}
+
+@layer base {
+  html {
+    -webkit-font-smoothing: antialiased;
+    text-rendering: optimizeLegibility;
+  }
+
+  body {
+    background-color: var(--color-background);
+    color: var(--color-foreground);
+    font-family: var(--font-sans);
+  }
+
+  /* Consistent, visible focus ring for keyboard users. */
+  :focus-visible {
+    outline: 2px solid var(--color-primary);
+    outline-offset: 2px;
+  }
+
+  ::selection {
+    background-color: var(--color-primary-soft);
+  }
+}
+
+@layer utilities {
+  .tabular {
+    font-variant-numeric: tabular-nums;
+  }
+
+  .scrollbar-thin {
+    scrollbar-width: thin;
+    scrollbar-color: var(--color-border) transparent;
+  }
+
+  .scrollbar-thin::-webkit-scrollbar {
+    width: 6px;
+    height: 6px;
+  }
+
+  .scrollbar-thin::-webkit-scrollbar-thumb {
+    background-color: var(--color-border);
+    border-radius: 9999px;
+  }
+}
+
+/* Recharts renders SVG text with its own defaults; align it with the token palette. */
+.recharts-text {
+  fill: var(--color-muted);
+  font-size: 12px;
+}
+
+.recharts-cartesian-axis-line,
+.recharts-cartesian-axis-tick-line {
+  stroke: var(--color-border);
+}
+
+.recharts-default-tooltip {
+  border-radius: 0.5rem !important;
+  border: 1px solid var(--color-border) !important;
+  box-shadow: 0 8px 24px rgb(15 23 42 / 0.08) !important;
+}

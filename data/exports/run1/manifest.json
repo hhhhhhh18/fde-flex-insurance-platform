@@ -1,0 +1,71 @@
+{
+  "checksums": {
+    "__dataset__": "07618df4c2d16ff04288cd4a4a5476261adfa5cb573a8104bbbefa89910d0d4b",
+    "applicants": "b52808c74ed4b62452dd3a3dd5b85e89881d3a3db98f3ec6cdceda9014253cc7",
+    "assets": "baabde5fdc5a6567d866264ef0cff875a6eff08d7ae8ea827fccdf2b8a937c16",
+    "coverageOptions": "b2db9afc29e6dda30af3e41fe04ffc5626b0f8023b1802e19cd60828f728da66",
+    "endorsements": "03878ac2e8e985f3ba1744a3179fdf1ec8d6a30f0d33c4b6aba751d095f9e468",
+    "policies": "e040a9b9f84593bc062a857b50314658201fc509f1daed22cd4b150507529bea",
+    "products": "9af5a8f9a93a1f2e0ffe14c3803fc43826abb4d5bd68f3324507e3590ea50395",
+    "quotes": "5ec90fab75599bee53bff2e807adf5ae52b19fdff683c25b8c3b12054c0c1848",
+    "renewals": "1ad35003a27b47efa8a01991c50bb25323f4365089de481e4d64c6d8aa388d3e",
+    "riskFactors": "8cc46521eed19aa9eeb3d65a69dab0d1a3666646b7446942f63e8e5e704fc150",
+    "underwriting": "98bc937b2d928c1a6b0d82d2577d350173692f96f939f0847e2b3c083135843d"
+  },
+  "datasetLabel": "baseline",
+  "deterministicFiles": [
+    "json/*.json",
+    "csv/*.csv",
+    "checksums.json",
+    "ground-truth/labels.json",
+    "sql/master-data.sql"
+  ],
+  "files": [
+    "data/exports/run1/json/products.json",
+    "data/exports/run1/csv/products.csv",
+    "data/exports/run1/json/coverageOptions.json",
+    "data/exports/run1/csv/coverageOptions.csv",
+    "data/exports/run1/json/riskFactors.json",
+    "data/exports/run1/csv/riskFactors.csv",
+    "data/exports/run1/json/applicants.json",
+    "data/exports/run1/csv/applicants.csv",
+    "data/exports/run1/json/assets.json",
+    "data/exports/run1/csv/assets.csv",
+    "data/exports/run1/json/quotes.json",
+    "data/exports/run1/csv/quotes.csv",
+    "data/exports/run1/json/policies.json",
+    "data/exports/run1/csv/policies.csv",
+    "data/exports/run1/json/endorsements.json",
+    "data/exports/run1/csv/endorsements.csv",
+    "data/exports/run1/json/renewals.json",
+    "data/exports/run1/csv/renewals.csv",
+    "data/exports/run1/json/underwriting.json",
+    "data/exports/run1/csv/underwriting.csv",
+    "data/exports/run1/json/dataset.json",
+    "data/exports/run1/sql/master-data.sql",
+    "data/exports/run1/checksums.json",
+    "data/exports/run1/validation-report.json",
+    "data/exports/run1/ground-truth/labels.json"
+  ],
+  "generatedAt": "2026-10-27T10:44:16.060Z",
+  "notes": [
+    "Database surrogate ids are intentionally excluded; business references are the keys.",
+    "Dates are normalised to YYYY-MM-DD and money to NUMERIC strings before hashing.",
+    "All entities are ordered by their natural key so checksums are order-independent of insertion."
+  ],
+  "rowCounts": {
+    "applicants": 14,
+    "assets": 25,
+    "coverageOptions": 13,
+    "endorsements": 2,
+    "policies": 12,
+    "products": 4,
+    "quotes": 27,
+    "renewals": 1,
+    "riskFactors": 10,
+    "underwriting": 11
+  },
+  "volatileFields": [
+    "manifest.generatedAt"
+  ]
+}

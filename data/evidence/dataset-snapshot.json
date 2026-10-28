@@ -1,0 +1,81 @@
+{
+  "capturedAt": "2026-10-28T06:24:04.681Z",
+  "checksums": {
+    "__dataset__": "6eeef0f61a4f52b1a6703dcd8574cd4088c004e5e88667cace040f1cb5042427",
+    "applicants": "b52808c74ed4b62452dd3a3dd5b85e89881d3a3db98f3ec6cdceda9014253cc7",
+    "assets": "baabde5fdc5a6567d866264ef0cff875a6eff08d7ae8ea827fccdf2b8a937c16",
+    "coverageOptions": "b2db9afc29e6dda30af3e41fe04ffc5626b0f8023b1802e19cd60828f728da66",
+    "endorsements": "03878ac2e8e985f3ba1744a3179fdf1ec8d6a30f0d33c4b6aba751d095f9e468",
+    "policies": "e040a9b9f84593bc062a857b50314658201fc509f1daed22cd4b150507529bea",
+    "products": "9af5a8f9a93a1f2e0ffe14c3803fc43826abb4d5bd68f3324507e3590ea50395",
+    "quotes": "a6461c7ad885eadcef31ed887612c5f3f1890f3606c5eeecaceab491d008bf54",
+    "renewals": "1ad35003a27b47efa8a01991c50bb25323f4365089de481e4d64c6d8aa388d3e",
+    "riskFactors": "8cc46521eed19aa9eeb3d65a69dab0d1a3666646b7446942f63e8e5e704fc150",
+    "underwriting": "b391081549572dce67d3f8c768a15e312c8041f6cca41d0cd24d9d334de00bb0"
+  },
+  "database": "insurancelab (working dataset, not reset)",
+  "phase3VerificationChanges": {
+    "quotes": [
+      {
+        "createdAt": {},
+        "decision": "INELIGIBLE",
+        "grossPremium": "551.23",
+        "product": {
+          "code": "MOT-FLEET"
+        },
+        "reference": "QTE-2026-00030",
+        "status": "EVALUATED"
+      },
+      {
+        "createdAt": {},
+        "decision": "INELIGIBLE",
+        "grossPremium": "1170.13",
+        "product": {
+          "code": "PROP-SHIELD"
+        },
+        "reference": "QTE-2026-00031",
+        "status": "EVALUATED"
+      },
+      {
+        "createdAt": {},
+        "decision": "ELIGIBLE",
+        "grossPremium": "976.8",
+        "product": {
+          "code": "PROP-SHIELD"
+        },
+        "reference": "QTE-2026-00032",
+        "status": "EVALUATED"
+      }
+    ],
+    "underwritingDecisions": [
+      {
+        "decidedAt": {},
+        "notes": "Approved after manual review of credit band and coverage limit.",
+        "quote": {
+          "reference": "QTE-2026-00001"
+        },
+        "reference": "UWD-2026-00001",
+        "reviewerRole": "RISK_REVIEWER",
+        "status": "APPROVED"
+      }
+    ]
+  },
+  "rowCounts": {
+    "applicants": 14,
+    "assets": 25,
+    "coverageOptions": 13,
+    "endorsements": 2,
+    "policies": 12,
+    "products": 4,
+    "quotes": 32,
+    "renewals": 1,
+    "riskFactors": 10,
+    "underwriting": 11
+  },
+  "totals": {
+    "audits": 70,
+    "groundTruthLabels": 7,
+    "validationFindings": 8,
+    "validationRuns": 1
+  }
+}

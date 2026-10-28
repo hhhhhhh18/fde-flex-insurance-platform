@@ -1,0 +1,1409 @@
+[
+  {
+    "applicantRef": "APP-2026-00001",
+    "appliedFactors": [
+      {
+        "code": "CREDIT_E",
+        "multiplier": "1.45",
+        "observedValue": "E",
+        "referred": true
+      },
+      {
+        "code": "USE_COMM",
+        "multiplier": "1.1",
+        "observedValue": "COMMERCIAL",
+        "referred": false
+      }
+    ],
+    "assetRef": "AST-2026-00001",
+    "coverageLimit": "1170000",
+    "coverages": [
+      {
+        "approvedLimit": "180000",
+        "code": "PRP-BI",
+        "limitViolation": false,
+        "rateFactor": "0.55",
+        "requestedLimit": "180000"
+      },
+      {
+        "approvedLimit": "150000",
+        "code": "PRP-EQK",
+        "limitViolation": false,
+        "rateFactor": "0.9",
+        "requestedLimit": "150000"
+      },
+      {
+        "approvedLimit": "600000",
+        "code": "PRP-FIR",
+        "limitViolation": false,
+        "rateFactor": "1",
+        "requestedLimit": "600000"
+      },
+      {
+        "approvedLimit": "240000",
+        "code": "PRP-FLD",
+        "limitViolation": false,
+        "rateFactor": "0.75",
+        "requestedLimit": "240000"
+      }
+    ],
+    "decision": "REFERRED",
+    "evaluatedAt": "2026-10-01",
+    "expiresAt": "2026-10-31",
+    "factorProduct": "1.595",
+    "grossPremium": "2992.06",
+    "netPremium": "2992.06",
+    "pricingVersion": "property-2026.2",
+    "productCode": "PROP-SHIELD",
+    "reference": "QTE-2026-00001",
+    "rulesVersion": "rules-2026.1",
+    "status": "EVALUATED"
+  },
+  {
+    "applicantRef": "APP-2026-00009",
+    "appliedFactors": [
+      {
+        "code": "AGE_10Y",
+        "multiplier": "1.15",
+        "observedValue": "13 years",
+        "referred": false
+      },
+      {
+        "code": "USE_COMM",
+        "multiplier": "1.1",
+        "observedValue": "COMMERCIAL",
+        "referred": false
+      }
+    ],
+    "assetRef": "AST-2026-00015",
+    "coverageLimit": "188000",
+    "coverages": [
+      {
+        "approvedLimit": "36000",
+        "code": "MOT-COL",
+        "limitViolation": false,
+        "rateFactor": "1",
+        "requestedLimit": "36000"
+      },
+      {
+        "approvedLimit": "120000",
+        "code": "MOT-LIA",
+        "limitViolation": false,
+        "rateFactor": "0.3",
+        "requestedLimit": "120000"
+      },
+      {
+        "approvedLimit": "32000",
+        "code": "MOT-THF",
+        "limitViolation": false,
+        "rateFactor": "0.65",
+        "requestedLimit": "32000"
+      }
+    ],
+    "decision": "ELIGIBLE",
+    "evaluatedAt": "2026-10-01",
+    "expiresAt": "2026-10-31",
+    "factorProduct": "1.265",
+    "grossPremium": "394.43",
+    "netPremium": "394.43",
+    "pricingVersion": "motor-2026.1",
+    "productCode": "MOT-FLEET",
+    "reference": "QTE-2026-00002",
+    "rulesVersion": "rules-2026.1",
+    "status": "ACCEPTED"
+  },
+  {
+    "applicantRef": "APP-2026-00006",
+    "appliedFactors": [
+      {
+        "code": "AGE_10Y",
+        "multiplier": "1.15",
+        "observedValue": "15 years",
+        "referred": false
+      },
+      {
+        "code": "CREDIT_D",
+        "multiplier": "1.2",
+        "observedValue": "D",
+        "referred": false
+      },
+      {
+        "code": "USE_COMM",
+        "multiplier": "1.1",
+        "observedValue": "COMMERCIAL",
+        "referred": false
+      }
+    ],
+    "assetRef": "AST-2026-00011",
+    "coverageLimit": "186000",
+    "coverages": [
+      {
+        "approvedLimit": "36000",
+        "code": "MOT-COL",
+        "limitViolation": false,
+        "rateFactor": "1",
+        "requestedLimit": "36000"
+      },
+      {
+        "approvedLimit": "150000",
+        "code": "MOT-LIA",
+        "limitViolation": false,
+        "rateFactor": "0.3",
+        "requestedLimit": "150000"
+      }
+    ],
+    "decision": "ELIGIBLE",
+    "evaluatedAt": "2026-10-01",
+    "expiresAt": "2026-10-31",
+    "factorProduct": "1.518",
+    "grossPremium": "393.47",
+    "netPremium": "393.47",
+    "pricingVersion": "motor-2026.1",
+    "productCode": "MOT-FLEET",
+    "reference": "QTE-2026-00003",
+    "rulesVersion": "rules-2026.1",
+    "status": "ACCEPTED"
+  },
+  {
+    "applicantRef": "APP-2026-00002",
+    "appliedFactors": [
+      {
+        "code": "AGE_10Y",
+        "multiplier": "1.15",
+        "observedValue": "20 years",
+        "referred": false
+      },
+      {
+        "code": "CLAIMS_2",
+        "multiplier": "1.25",
+        "observedValue": "2 claims",
+        "referred": false
+      },
+      {
+        "code": "USE_COMM",
+        "multiplier": "1.1",
+        "observedValue": "COMMERCIAL",
+        "referred": false
+      }
+    ],
+    "assetRef": "AST-2026-00002",
+    "coverageLimit": "575000",
+    "coverages": [
+      {
+        "approvedLimit": "80000",
+        "code": "CYB-BI",
+        "limitViolation": false,
+        "rateFactor": "0.6",
+        "requestedLimit": "80000"
+      },
+      {
+        "approvedLimit": "375000",
+        "code": "CYB-INC",
+        "limitViolation": false,
+        "rateFactor": "1",
+        "requestedLimit": "375000"
+      },
+      {
+        "approvedLimit": "120000",
+        "code": "CYB-LIA",
+        "limitViolation": false,
+        "rateFactor": "0.35",
+        "requestedLimit": "120000"
+      }
+    ],
+    "decision": "ELIGIBLE",
+    "evaluatedAt": "2026-10-01",
+    "expiresAt": "2026-10-31",
+    "factorProduct": "1.58125",
+    "grossPremium": "1764.68",
+    "netPremium": "1764.68",
+    "pricingVersion": "cyber-2026.3",
+    "productCode": "CYB-GUARD",
+    "reference": "QTE-2026-00004",
+    "rulesVersion": "rules-2026.1",
+    "status": "EVALUATED"
+  },
+  {
+    "applicantRef": "APP-2026-00013",
+    "appliedFactors": [
+      {
+        "code": "AGE_10Y",
+        "multiplier": "1.15",
+        "observedValue": "10 years",
+        "referred": false
+      },
+      {
+        "code": "CREDIT_E",
+        "multiplier": "1.45",
+        "observedValue": "E",
+        "referred": true
+      }
+    ],
+    "assetRef": "AST-2026-00022",
+    "coverageLimit": "210000",
+    "coverages": [
+      {
+        "approvedLimit": "60000",
+        "code": "MOT-COL",
+        "limitViolation": false,
+        "rateFactor": "1",
+        "requestedLimit": "60000"
+      },
+      {
+        "approvedLimit": "150000",
+        "code": "MOT-LIA",
+        "limitViolation": false,
+        "rateFactor": "0.3",
+        "requestedLimit": "150000"
+      }
+    ],
+    "decision": "REFERRED",
+    "evaluatedAt": "2026-10-01",
+    "expiresAt": "2026-10-31",
+    "factorProduct": "1.6675",
+    "grossPremium": "560.28",
+    "netPremium": "560.28",
+    "pricingVersion": "motor-2026.1",
+    "productCode": "MOT-FLEET",
+    "reference": "QTE-2026-00005",
+    "rulesVersion": "rules-2026.1",
+    "status": "EVALUATED"
+  },
+  {
+    "applicantRef": "APP-2026-00003",
+    "appliedFactors": [
+      {
+        "code": "CREDIT_D",
+        "multiplier": "1.2",
+        "observedValue": "D",
+        "referred": false
+      }
+    ],
+    "assetRef": null,
+    "coverageLimit": "240000",
+    "coverages": [
+      {
+        "approvedLimit": "240000",
+        "code": "LIA-IND",
+        "limitViolation": false,
+        "rateFactor": "1",
+        "requestedLimit": "240000"
+      }
+    ],
+    "decision": "ELIGIBLE",
+    "evaluatedAt": "2026-10-01",
+    "expiresAt": "2026-10-31",
+    "factorProduct": "1.2",
+    "grossPremium": "345.6",
+    "netPremium": "345.6",
+    "pricingVersion": "liability-2026.1",
+    "productCode": "LIA-FLEX",
+    "reference": "QTE-2026-00006",
+    "rulesVersion": "rules-2026.1",
+    "status": "ACCEPTED"
+  },
+  {
+    "applicantRef": "APP-2026-00006",
+    "appliedFactors": [
+      {
+        "code": "AGE_10Y",
+        "multiplier": "1.15",
+        "observedValue": "15 years",
+        "referred": false
+      },
+      {
+        "code": "CREDIT_D",
+        "multiplier": "1.2",
+        "observedValue": "D",
+        "referred": false
+      },
+      {
+        "code": "USE_COMM",
+        "multiplier": "1.1",
+        "observedValue": "COMMERCIAL",
+        "referred": false
+      }
+    ],
+    "assetRef": "AST-2026-00011",
+    "coverageLimit": "207000",
+    "coverages": [
+      {
+        "approvedLimit": "72000",
+        "code": "MOT-COL",
+        "limitViolation": false,
+        "rateFactor": "1",
+        "requestedLimit": "72000"
+      },
+      {
+        "approvedLimit": "35000",
+        "code": "MOT-FIR",
+        "limitViolation": false,
+        "rateFactor": "0.45",
+        "requestedLimit": "35000"
+      },
+      {
+        "approvedLimit": "100000",
+        "code": "MOT-LIA",
+        "limitViolation": false,
+        "rateFactor": "0.3",
+        "requestedLimit": "100000"
+      }
+    ],
+    "decision": "ELIGIBLE",
+    "evaluatedAt": "2026-10-01",
+    "expiresAt": "2026-10-31",
+    "factorProduct": "1.518",
+    "grossPremium": "571.98",
+    "netPremium": "571.98",
+    "pricingVersion": "motor-2026.1",
+    "productCode": "MOT-FLEET",
+    "reference": "QTE-2026-00007",
+    "rulesVersion": "rules-2026.1",
+    "status": "EVALUATED"
+  },
+  {
+    "applicantRef": "APP-2026-00012",
+    "appliedFactors": [
+      {
+        "code": "AGE_10Y",
+        "multiplier": "1.15",
+        "observedValue": "13 years",
+        "referred": false
+      },
+      {
+        "code": "CLAIMS_2",
+        "multiplier": "1.25",
+        "observedValue": "2 claims",
+        "referred": false
+      }
+    ],
+    "assetRef": "AST-2026-00021",
+    "coverageLimit": "207000",
+    "coverages": [
+      {
+        "approvedLimit": "48000",
+        "code": "MOT-COL",
+        "limitViolation": false,
+        "rateFactor": "1",
+        "requestedLimit": "48000"
+      },
+      {
+        "approvedLimit": "35000",
+        "code": "MOT-FIR",
+        "limitViolation": false,
+        "rateFactor": "0.45",
+        "requestedLimit": "35000"
+      },
+      {
+        "approvedLimit": "100000",
+        "code": "MOT-LIA",
+        "limitViolation": false,
+        "rateFactor": "0.3",
+        "requestedLimit": "100000"
+      },
+      {
+        "approvedLimit": "24000",
+        "code": "MOT-THF",
+        "limitViolation": false,
+        "rateFactor": "0.65",
+        "requestedLimit": "24000"
+      }
+    ],
+    "decision": "ELIGIBLE",
+    "evaluatedAt": "2026-10-01",
+    "expiresAt": "2026-10-31",
+    "factorProduct": "1.4375",
+    "grossPremium": "503.01",
+    "netPremium": "503.01",
+    "pricingVersion": "motor-2026.1",
+    "productCode": "MOT-FLEET",
+    "reference": "QTE-2026-00008",
+    "rulesVersion": "rules-2026.1",
+    "status": "ACCEPTED"
+  },
+  {
+    "applicantRef": "APP-2026-00014",
+    "appliedFactors": [
+      {
+        "code": "AGE_10Y",
+        "multiplier": "1.15",
+        "observedValue": "15 years",
+        "referred": false
+      },
+      {
+        "code": "OCC_4",
+        "multiplier": "1.15",
+        "observedValue": "class 4",
+        "referred": false
+      },
+      {
+        "code": "USE_COMM",
+        "multiplier": "1.1",
+        "observedValue": "COMMERCIAL",
+        "referred": false
+      }
+    ],
+    "assetRef": "AST-2026-00024",
+    "coverageLimit": "480000",
+    "coverages": [
+      {
+        "approvedLimit": "240000",
+        "code": "PRP-FIR",
+        "limitViolation": false,
+        "rateFactor": "1",
+        "requestedLimit": "240000"
+      },
+      {
+        "approvedLimit": "240000",
+        "code": "PRP-FLD",
+        "limitViolation": false,
+        "rateFactor": "0.75",
+        "requestedLimit": "240000"
+      }
+    ],
+    "decision": "ELIGIBLE",
+    "evaluatedAt": "2026-10-01",
+    "expiresAt": "2026-10-31",
+    "factorProduct": "1.45475",
+    "grossPremium": "1130.34",
+    "netPremium": "1130.34",
+    "pricingVersion": "property-2026.2",
+    "productCode": "PROP-SHIELD",
+    "reference": "QTE-2026-00009",
+    "rulesVersion": "rules-2026.1",
+    "status": "ACCEPTED"
+  },
+  {
+    "applicantRef": "APP-2026-00006",
+    "appliedFactors": [
+      {
+        "code": "AGE_10Y",
+        "multiplier": "1.15",
+        "observedValue": "18 years",
+        "referred": false
+      },
+      {
+        "code": "CREDIT_D",
+        "multiplier": "1.2",
+        "observedValue": "D",
+        "referred": false
+      },
+      {
+        "code": "USE_COMM",
+        "multiplier": "1.1",
+        "observedValue": "COMMERCIAL",
+        "referred": false
+      }
+    ],
+    "assetRef": "AST-2026-00010",
+    "coverageLimit": "370000",
+    "coverages": [
+      {
+        "approvedLimit": "250000",
+        "code": "CYB-INC",
+        "limitViolation": false,
+        "rateFactor": "1",
+        "requestedLimit": "250000"
+      },
+      {
+        "approvedLimit": "120000",
+        "code": "CYB-LIA",
+        "limitViolation": false,
+        "rateFactor": "0.35",
+        "requestedLimit": "120000"
+      }
+    ],
+    "decision": "ELIGIBLE",
+    "evaluatedAt": "2026-10-01",
+    "expiresAt": "2026-10-31",
+    "factorProduct": "1.518",
+    "grossPremium": "1063.81",
+    "netPremium": "1063.81",
+    "pricingVersion": "cyber-2026.3",
+    "productCode": "CYB-GUARD",
+    "reference": "QTE-2026-00010",
+    "rulesVersion": "rules-2026.1",
+    "status": "ACCEPTED"
+  },
+  {
+    "applicantRef": "APP-2026-00001",
+    "appliedFactors": [
+      {
+        "code": "CREDIT_E",
+        "multiplier": "1.45",
+        "observedValue": "E",
+        "referred": true
+      },
+      {
+        "code": "USE_COMM",
+        "multiplier": "1.1",
+        "observedValue": "COMMERCIAL",
+        "referred": false
+      }
+    ],
+    "assetRef": "AST-2026-00001",
+    "coverageLimit": "432000",
+    "coverages": [
+      {
+        "approvedLimit": "72000",
+        "code": "PRP-BI",
+        "limitViolation": false,
+        "rateFactor": "0.55",
+        "requestedLimit": "72000"
+      },
+      {
+        "approvedLimit": "120000",
+        "code": "PRP-EQK",
+        "limitViolation": false,
+        "rateFactor": "0.9",
+        "requestedLimit": "120000"
+      },
+      {
+        "approvedLimit": "240000",
+        "code": "PRP-FIR",
+        "limitViolation": false,
+        "rateFactor": "1",
+        "requestedLimit": "240000"
+      }
+    ],
+    "decision": "ELIGIBLE",
+    "evaluatedAt": "2026-10-01",
+    "expiresAt": "2026-10-31",
+    "factorProduct": "1.595",
+    "grossPremium": "1143.71",
+    "netPremium": "1143.71",
+    "pricingVersion": "property-2026.2",
+    "productCode": "PROP-SHIELD",
+    "reference": "QTE-2026-00011",
+    "rulesVersion": "rules-2026.1",
+    "status": "EVALUATED"
+  },
+  {
+    "applicantRef": "APP-2026-00001",
+    "appliedFactors": [
+      {
+        "code": "CREDIT_E",
+        "multiplier": "1.45",
+        "observedValue": "E",
+        "referred": true
+      },
+      {
+        "code": "USE_COMM",
+        "multiplier": "1.1",
+        "observedValue": "COMMERCIAL",
+        "referred": false
+      }
+    ],
+    "assetRef": "AST-2026-00001",
+    "coverageLimit": "600000",
+    "coverages": [
+      {
+        "approvedLimit": "600000",
+        "code": "PRP-FIR",
+        "limitViolation": false,
+        "rateFactor": "1",
+        "requestedLimit": "600000"
+      }
+    ],
+    "decision": "ELIGIBLE",
+    "evaluatedAt": "2026-10-01",
+    "expiresAt": "2026-10-31",
+    "factorProduct": "1.595",
+    "grossPremium": "1770.45",
+    "netPremium": "1770.45",
+    "pricingVersion": "property-2026.2",
+    "productCode": "PROP-SHIELD",
+    "reference": "QTE-2026-00012",
+    "rulesVersion": "rules-2026.1",
+    "status": "EVALUATED"
+  },
+  {
+    "applicantRef": "APP-2026-00009",
+    "appliedFactors": [
+      {
+        "code": "AGE_10Y",
+        "multiplier": "1.15",
+        "observedValue": "13 years",
+        "referred": false
+      },
+      {
+        "code": "USE_COMM",
+        "multiplier": "1.1",
+        "observedValue": "COMMERCIAL",
+        "referred": false
+      }
+    ],
+    "assetRef": "AST-2026-00015",
+    "coverageLimit": "224500",
+    "coverages": [
+      {
+        "approvedLimit": "60000",
+        "code": "MOT-COL",
+        "limitViolation": false,
+        "rateFactor": "1",
+        "requestedLimit": "60000"
+      },
+      {
+        "approvedLimit": "52500",
+        "code": "MOT-FIR",
+        "limitViolation": false,
+        "rateFactor": "0.45",
+        "requestedLimit": "52500"
+      },
+      {
+        "approvedLimit": "80000",
+        "code": "MOT-LIA",
+        "limitViolation": false,
+        "rateFactor": "0.3",
+        "requestedLimit": "80000"
+      },
+      {
+        "approvedLimit": "32000",
+        "code": "MOT-THF",
+        "limitViolation": false,
+        "rateFactor": "0.65",
+        "requestedLimit": "32000"
+      }
+    ],
+    "decision": "ELIGIBLE",
+    "evaluatedAt": "2026-10-01",
+    "expiresAt": "2026-10-31",
+    "factorProduct": "1.265",
+    "grossPremium": "519.86",
+    "netPremium": "519.86",
+    "pricingVersion": "motor-2026.1",
+    "productCode": "MOT-FLEET",
+    "reference": "QTE-2026-00013",
+    "rulesVersion": "rules-2026.1",
+    "status": "EVALUATED"
+  },
+  {
+    "applicantRef": "APP-2026-00008",
+    "appliedFactors": [
+      {
+        "code": "AGE_10Y",
+        "multiplier": "1.15",
+        "observedValue": "24 years",
+        "referred": false
+      },
+      {
+        "code": "OCC_4",
+        "multiplier": "1.15",
+        "observedValue": "class 4",
+        "referred": false
+      }
+    ],
+    "assetRef": "AST-2026-00014",
+    "coverageLimit": "424000",
+    "coverages": [
+      {
+        "approvedLimit": "64000",
+        "code": "LIA-BI",
+        "limitViolation": false,
+        "rateFactor": "0.4",
+        "requestedLimit": "64000"
+      },
+      {
+        "approvedLimit": "360000",
+        "code": "LIA-IND",
+        "limitViolation": false,
+        "rateFactor": "1",
+        "requestedLimit": "360000"
+      }
+    ],
+    "decision": "ELIGIBLE",
+    "evaluatedAt": "2026-10-01",
+    "expiresAt": "2026-10-31",
+    "factorProduct": "1.3225",
+    "grossPremium": "611.95",
+    "netPremium": "611.95",
+    "pricingVersion": "liability-2026.1",
+    "productCode": "LIA-FLEX",
+    "reference": "QTE-2026-00014",
+    "rulesVersion": "rules-2026.1",
+    "status": "ACCEPTED"
+  },
+  {
+    "applicantRef": "APP-2026-00012",
+    "appliedFactors": [
+      {
+        "code": "AGE_10Y",
+        "multiplier": "1.15",
+        "observedValue": "13 years",
+        "referred": false
+      },
+      {
+        "code": "CLAIMS_2",
+        "multiplier": "1.25",
+        "observedValue": "2 claims",
+        "referred": false
+      }
+    ],
+    "assetRef": "AST-2026-00021",
+    "coverageLimit": "221000",
+    "coverages": [
+      {
+        "approvedLimit": "36000",
+        "code": "MOT-COL",
+        "limitViolation": false,
+        "rateFactor": "1",
+        "requestedLimit": "36000"
+      },
+      {
+        "approvedLimit": "35000",
+        "code": "MOT-FIR",
+        "limitViolation": false,
+        "rateFactor": "0.45",
+        "requestedLimit": "35000"
+      },
+      {
+        "approvedLimit": "150000",
+        "code": "MOT-LIA",
+        "limitViolation": false,
+        "rateFactor": "0.3",
+        "requestedLimit": "150000"
+      }
+    ],
+    "decision": "ELIGIBLE",
+    "evaluatedAt": "2026-10-01",
+    "expiresAt": "2026-10-31",
+    "factorProduct": "1.4375",
+    "grossPremium": "445.05",
+    "netPremium": "445.05",
+    "pricingVersion": "motor-2026.1",
+    "productCode": "MOT-FLEET",
+    "reference": "QTE-2026-00015",
+    "rulesVersion": "rules-2026.1",
+    "status": "EVALUATED"
+  },
+  {
+    "applicantRef": "APP-2026-00001",
+    "appliedFactors": [
+      {
+        "code": "CREDIT_E",
+        "multiplier": "1.45",
+        "observedValue": "E",
+        "referred": true
+      },
+      {
+        "code": "USE_COMM",
+        "multiplier": "1.1",
+        "observedValue": "COMMERCIAL",
+        "referred": false
+      }
+    ],
+    "assetRef": "AST-2026-00001",
+    "coverageLimit": "510000",
+    "coverages": [
+      {
+        "approvedLimit": "180000",
+        "code": "PRP-BI",
+        "limitViolation": false,
+        "rateFactor": "0.55",
+        "requestedLimit": "180000"
+      },
+      {
+        "approvedLimit": "90000",
+        "code": "PRP-EQK",
+        "limitViolation": false,
+        "rateFactor": "0.9",
+        "requestedLimit": "90000"
+      },
+      {
+        "approvedLimit": "240000",
+        "code": "PRP-FIR",
+        "limitViolation": false,
+        "rateFactor": "1",
+        "requestedLimit": "240000"
+      }
+    ],
+    "decision": "REFERRED",
+    "evaluatedAt": "2026-10-01",
+    "expiresAt": "2026-10-31",
+    "factorProduct": "1.595",
+    "grossPremium": "1239.32",
+    "netPremium": "1239.32",
+    "pricingVersion": "property-2026.2",
+    "productCode": "PROP-SHIELD",
+    "reference": "QTE-2026-00016",
+    "rulesVersion": "rules-2026.1",
+    "status": "EVALUATED"
+  },
+  {
+    "applicantRef": "APP-2026-00003",
+    "appliedFactors": [
+      {
+        "code": "AGE_10Y",
+        "multiplier": "1.15",
+        "observedValue": "19 years",
+        "referred": false
+      },
+      {
+        "code": "CREDIT_D",
+        "multiplier": "1.2",
+        "observedValue": "D",
+        "referred": false
+      }
+    ],
+    "assetRef": "AST-2026-00007",
+    "coverageLimit": "263000",
+    "coverages": [
+      {
+        "approvedLimit": "60000",
+        "code": "MOT-COL",
+        "limitViolation": false,
+        "rateFactor": "1",
+        "requestedLimit": "60000"
+      },
+      {
+        "approvedLimit": "21000",
+        "code": "MOT-FIR",
+        "limitViolation": false,
+        "rateFactor": "0.45",
+        "requestedLimit": "21000"
+      },
+      {
+        "approvedLimit": "150000",
+        "code": "MOT-LIA",
+        "limitViolation": false,
+        "rateFactor": "0.3",
+        "requestedLimit": "150000"
+      },
+      {
+        "approvedLimit": "32000",
+        "code": "MOT-THF",
+        "limitViolation": false,
+        "rateFactor": "0.65",
+        "requestedLimit": "32000"
+      }
+    ],
+    "decision": "REFERRED",
+    "evaluatedAt": "2026-10-01",
+    "expiresAt": "2026-10-31",
+    "factorProduct": "1.38",
+    "grossPremium": "597.26",
+    "netPremium": "597.26",
+    "pricingVersion": "motor-2026.1",
+    "productCode": "MOT-FLEET",
+    "reference": "QTE-2026-00017",
+    "rulesVersion": "rules-2026.1",
+    "status": "EVALUATED"
+  },
+  {
+    "applicantRef": "APP-2026-00011",
+    "appliedFactors": [
+      {
+        "code": "AGE_10Y",
+        "multiplier": "1.15",
+        "observedValue": "12 years",
+        "referred": false
+      },
+      {
+        "code": "CLAIMS_2",
+        "multiplier": "1.25",
+        "observedValue": "2 claims",
+        "referred": false
+      },
+      {
+        "code": "USE_COMM",
+        "multiplier": "1.1",
+        "observedValue": "COMMERCIAL",
+        "referred": false
+      }
+    ],
+    "assetRef": "AST-2026-00019",
+    "coverageLimit": "400000",
+    "coverages": [
+      {
+        "approvedLimit": "400000",
+        "code": "PRP-FIR",
+        "limitViolation": false,
+        "rateFactor": "1",
+        "requestedLimit": "400000"
+      }
+    ],
+    "decision": "ELIGIBLE",
+    "evaluatedAt": "2026-10-01",
+    "expiresAt": "2026-10-31",
+    "factorProduct": "1.58125",
+    "grossPremium": "1170.13",
+    "netPremium": "1170.13",
+    "pricingVersion": "property-2026.2",
+    "productCode": "PROP-SHIELD",
+    "reference": "QTE-2026-00018",
+    "rulesVersion": "rules-2026.1",
+    "status": "ACCEPTED"
+  },
+  {
+    "applicantRef": "APP-2026-00011",
+    "appliedFactors": [
+      {
+        "code": "AGE_10Y",
+        "multiplier": "1.15",
+        "observedValue": "15 years",
+        "referred": false
+      },
+      {
+        "code": "CLAIMS_2",
+        "multiplier": "1.25",
+        "observedValue": "4 claims",
+        "referred": false
+      },
+      {
+        "code": "CLAIMS_3",
+        "multiplier": "1.45",
+        "observedValue": "4 claims",
+        "referred": true
+      },
+      {
+        "code": "USE_COMM",
+        "multiplier": "1.1",
+        "observedValue": "COMMERCIAL",
+        "referred": false
+      }
+    ],
+    "assetRef": "AST-2026-00020",
+    "coverageLimit": "300000",
+    "coverages": [
+      {
+        "approvedLimit": "100000",
+        "code": "CYB-BI",
+        "limitViolation": false,
+        "rateFactor": "0.6",
+        "requestedLimit": "100000"
+      },
+      {
+        "approvedLimit": "200000",
+        "code": "CYB-INC",
+        "limitViolation": false,
+        "rateFactor": "1",
+        "requestedLimit": "200000"
+      }
+    ],
+    "decision": "AWAITING_INFORMATION",
+    "evaluatedAt": "2026-10-01",
+    "expiresAt": "2026-10-31",
+    "factorProduct": "2.292813",
+    "grossPremium": "1430.72",
+    "netPremium": "1430.72",
+    "pricingVersion": "cyber-2026.3",
+    "productCode": "CYB-GUARD",
+    "reference": "QTE-2026-00019",
+    "rulesVersion": "rules-2026.1",
+    "status": "EVALUATED"
+  },
+  {
+    "applicantRef": "APP-2026-00011",
+    "appliedFactors": [
+      {
+        "code": "AGE_10Y",
+        "multiplier": "1.15",
+        "observedValue": "15 years",
+        "referred": false
+      },
+      {
+        "code": "CLAIMS_2",
+        "multiplier": "1.25",
+        "observedValue": "4 claims",
+        "referred": false
+      },
+      {
+        "code": "CLAIMS_3",
+        "multiplier": "1.45",
+        "observedValue": "4 claims",
+        "referred": true
+      },
+      {
+        "code": "USE_COMM",
+        "multiplier": "1.1",
+        "observedValue": "COMMERCIAL",
+        "referred": false
+      }
+    ],
+    "assetRef": "AST-2026-00020",
+    "coverageLimit": "450000",
+    "coverages": [
+      {
+        "approvedLimit": "150000",
+        "code": "CYB-BI",
+        "limitViolation": false,
+        "rateFactor": "0.6",
+        "requestedLimit": "150000"
+      },
+      {
+        "approvedLimit": "300000",
+        "code": "CYB-INC",
+        "limitViolation": false,
+        "rateFactor": "1",
+        "requestedLimit": "300000"
+      }
+    ],
+    "decision": "REFERRED",
+    "evaluatedAt": "2026-10-01",
+    "expiresAt": "2026-10-31",
+    "factorProduct": "2.292813",
+    "grossPremium": "2146.07",
+    "netPremium": "2146.07",
+    "pricingVersion": "cyber-2026.3",
+    "productCode": "CYB-GUARD",
+    "reference": "QTE-2026-00020",
+    "rulesVersion": "rules-2026.1",
+    "status": "EVALUATED"
+  },
+  {
+    "applicantRef": "APP-2026-00010",
+    "appliedFactors": [
+      {
+        "code": "CREDIT_D",
+        "multiplier": "1.2",
+        "observedValue": "D",
+        "referred": false
+      },
+      {
+        "code": "USE_COMM",
+        "multiplier": "1.1",
+        "observedValue": "COMMERCIAL",
+        "referred": false
+      }
+    ],
+    "assetRef": "AST-2026-00018",
+    "coverageLimit": "498000",
+    "coverages": [
+      {
+        "approvedLimit": "48000",
+        "code": "LIA-BI",
+        "limitViolation": false,
+        "rateFactor": "0.4",
+        "requestedLimit": "48000"
+      },
+      {
+        "approvedLimit": "450000",
+        "code": "LIA-IND",
+        "limitViolation": false,
+        "rateFactor": "1",
+        "requestedLimit": "450000"
+      }
+    ],
+    "decision": "ELIGIBLE",
+    "evaluatedAt": "2026-10-01",
+    "expiresAt": "2026-10-31",
+    "factorProduct": "1.32",
+    "grossPremium": "743.21",
+    "netPremium": "743.21",
+    "pricingVersion": "liability-2026.1",
+    "productCode": "LIA-FLEX",
+    "reference": "QTE-2026-00021",
+    "rulesVersion": "rules-2026.1",
+    "status": "EVALUATED"
+  },
+  {
+    "applicantRef": "APP-2026-00009",
+    "appliedFactors": [
+      {
+        "code": "AGE_10Y",
+        "multiplier": "1.15",
+        "observedValue": "13 years",
+        "referred": false
+      },
+      {
+        "code": "USE_COMM",
+        "multiplier": "1.1",
+        "observedValue": "COMMERCIAL",
+        "referred": false
+      }
+    ],
+    "assetRef": "AST-2026-00015",
+    "coverageLimit": "273000",
+    "coverages": [
+      {
+        "approvedLimit": "72000",
+        "code": "MOT-COL",
+        "limitViolation": false,
+        "rateFactor": "1",
+        "requestedLimit": "72000"
+      },
+      {
+        "approvedLimit": "21000",
+        "code": "MOT-FIR",
+        "limitViolation": false,
+        "rateFactor": "0.45",
+        "requestedLimit": "21000"
+      },
+      {
+        "approvedLimit": "120000",
+        "code": "MOT-LIA",
+        "limitViolation": false,
+        "rateFactor": "0.3",
+        "requestedLimit": "120000"
+      },
+      {
+        "approvedLimit": "60000",
+        "code": "MOT-THF",
+        "limitViolation": false,
+        "rateFactor": "0.65",
+        "requestedLimit": "60000"
+      }
+    ],
+    "decision": "ELIGIBLE",
+    "evaluatedAt": "2026-10-01",
+    "expiresAt": "2026-10-31",
+    "factorProduct": "1.265",
+    "grossPremium": "633.31",
+    "netPremium": "633.31",
+    "pricingVersion": "motor-2026.1",
+    "productCode": "MOT-FLEET",
+    "reference": "QTE-2026-00022",
+    "rulesVersion": "rules-2026.1",
+    "status": "ACCEPTED"
+  },
+  {
+    "applicantRef": "APP-2026-00011",
+    "appliedFactors": [
+      {
+        "code": "AGE_10Y",
+        "multiplier": "1.15",
+        "observedValue": "15 years",
+        "referred": false
+      },
+      {
+        "code": "CLAIMS_2",
+        "multiplier": "1.25",
+        "observedValue": "4 claims",
+        "referred": false
+      },
+      {
+        "code": "CLAIMS_3",
+        "multiplier": "1.45",
+        "observedValue": "4 claims",
+        "referred": true
+      },
+      {
+        "code": "USE_COMM",
+        "multiplier": "1.1",
+        "observedValue": "COMMERCIAL",
+        "referred": false
+      }
+    ],
+    "assetRef": "AST-2026-00020",
+    "coverageLimit": "440000",
+    "coverages": [
+      {
+        "approvedLimit": "120000",
+        "code": "CYB-BI",
+        "limitViolation": false,
+        "rateFactor": "0.6",
+        "requestedLimit": "120000"
+      },
+      {
+        "approvedLimit": "200000",
+        "code": "CYB-INC",
+        "limitViolation": false,
+        "rateFactor": "1",
+        "requestedLimit": "200000"
+      },
+      {
+        "approvedLimit": "120000",
+        "code": "CYB-LIA",
+        "limitViolation": false,
+        "rateFactor": "0.35",
+        "requestedLimit": "120000"
+      }
+    ],
+    "decision": "REFERRED",
+    "evaluatedAt": "2026-10-01",
+    "expiresAt": "2026-10-31",
+    "factorProduct": "2.292813",
+    "grossPremium": "1727.86",
+    "netPremium": "1727.86",
+    "pricingVersion": "cyber-2026.3",
+    "productCode": "CYB-GUARD",
+    "reference": "QTE-2026-00023",
+    "rulesVersion": "rules-2026.1",
+    "status": "EVALUATED"
+  },
+  {
+    "applicantRef": "APP-2026-00009",
+    "appliedFactors": [
+      {
+        "code": "AGE_10Y",
+        "multiplier": "1.15",
+        "observedValue": "13 years",
+        "referred": false
+      },
+      {
+        "code": "USE_COMM",
+        "multiplier": "1.1",
+        "observedValue": "COMMERCIAL",
+        "referred": false
+      }
+    ],
+    "assetRef": "AST-2026-00015",
+    "coverageLimit": "248500",
+    "coverages": [
+      {
+        "approvedLimit": "36000",
+        "code": "MOT-COL",
+        "limitViolation": false,
+        "rateFactor": "1",
+        "requestedLimit": "36000"
+      },
+      {
+        "approvedLimit": "52500",
+        "code": "MOT-FIR",
+        "limitViolation": false,
+        "rateFactor": "0.45",
+        "requestedLimit": "52500"
+      },
+      {
+        "approvedLimit": "100000",
+        "code": "MOT-LIA",
+        "limitViolation": false,
+        "rateFactor": "0.3",
+        "requestedLimit": "100000"
+      },
+      {
+        "approvedLimit": "60000",
+        "code": "MOT-THF",
+        "limitViolation": false,
+        "rateFactor": "0.65",
+        "requestedLimit": "60000"
+      }
+    ],
+    "decision": "ELIGIBLE",
+    "evaluatedAt": "2026-10-01",
+    "expiresAt": "2026-10-31",
+    "factorProduct": "1.265",
+    "grossPremium": "520.67",
+    "netPremium": "520.67",
+    "pricingVersion": "motor-2026.1",
+    "productCode": "MOT-FLEET",
+    "reference": "QTE-2026-00024",
+    "rulesVersion": "rules-2026.1",
+    "status": "EVALUATED"
+  },
+  {
+    "applicantRef": "APP-2026-00004",
+    "appliedFactors": [],
+    "assetRef": "AST-2026-00008",
+    "coverageLimit": "210000",
+    "coverages": [
+      {
+        "approvedLimit": "150000",
+        "code": "CYB-INC",
+        "limitViolation": false,
+        "rateFactor": "1",
+        "requestedLimit": "150000"
+      },
+      {
+        "approvedLimit": "60000",
+        "code": "CYB-LIA",
+        "limitViolation": false,
+        "rateFactor": "0.35",
+        "requestedLimit": "60000"
+      }
+    ],
+    "decision": "AWAITING_INFORMATION",
+    "evaluatedAt": "2026-10-01",
+    "expiresAt": "2026-10-31",
+    "factorProduct": "1",
+    "grossPremium": "410.4",
+    "netPremium": "410.4",
+    "pricingVersion": "cyber-2026.3",
+    "productCode": "CYB-GUARD",
+    "reference": "QTE-2026-00025",
+    "rulesVersion": "rules-2026.1",
+    "status": "EVALUATED"
+  },
+  {
+    "applicantRef": "APP-2026-00009",
+    "appliedFactors": [
+      {
+        "code": "USE_COMM",
+        "multiplier": "1.1",
+        "observedValue": "COMMERCIAL",
+        "referred": false
+      }
+    ],
+    "assetRef": "AST-2026-00016",
+    "coverageLimit": "440000",
+    "coverages": [
+      {
+        "approvedLimit": "120000",
+        "code": "PRP-EQK",
+        "limitViolation": false,
+        "rateFactor": "0.9",
+        "requestedLimit": "120000"
+      },
+      {
+        "approvedLimit": "2500000",
+        "code": "PRP-FIR",
+        "limitViolation": false,
+        "rateFactor": "1",
+        "requestedLimit": "2500000"
+      }
+    ],
+    "decision": "ELIGIBLE",
+    "evaluatedAt": "2026-10-01",
+    "expiresAt": "2026-10-31",
+    "factorProduct": "1.1",
+    "grossPremium": "870.98",
+    "netPremium": "870.98",
+    "pricingVersion": "property-2026.2",
+    "productCode": "PROP-SHIELD",
+    "reference": "QTE-2026-00026",
+    "rulesVersion": "rules-2026.1",
+    "status": "ACCEPTED"
+  },
+  {
+    "applicantRef": "APP-2026-00006",
+    "appliedFactors": [
+      {
+        "code": "AGE_10Y",
+        "multiplier": "1.15",
+        "observedValue": "15 years",
+        "referred": false
+      },
+      {
+        "code": "CREDIT_D",
+        "multiplier": "1.2",
+        "observedValue": "D",
+        "referred": false
+      },
+      {
+        "code": "USE_COMM",
+        "multiplier": "1.1",
+        "observedValue": "COMMERCIAL",
+        "referred": false
+      }
+    ],
+    "assetRef": "AST-2026-00011",
+    "coverageLimit": "391800",
+    "coverages": [
+      {
+        "approvedLimit": "36000",
+        "code": "MOT-COL",
+        "limitViolation": false,
+        "rateFactor": "1",
+        "requestedLimit": "36000"
+      },
+      {
+        "approvedLimit": "150000",
+        "code": "MOT-LIA",
+        "limitViolation": false,
+        "rateFactor": "0.3",
+        "requestedLimit": "150000"
+      }
+    ],
+    "decision": "ELIGIBLE",
+    "evaluatedAt": "2026-10-01",
+    "expiresAt": "2026-10-31",
+    "factorProduct": "1.518",
+    "grossPremium": "393.47",
+    "netPremium": "393.47",
+    "pricingVersion": "motor-2026.1",
+    "productCode": "MOT-FLEET",
+    "reference": "QTE-2026-00027",
+    "rulesVersion": "rules-2026.1",
+    "status": "ACCEPTED"
+  }
+]

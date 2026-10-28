@@ -1,0 +1,36 @@
+{
+  "seed": 20261001,
+  "scale": "small",
+  "datasetLabel": "repro-b",
+  "anchor": "2026-10-01T00:00:00.000Z",
+  "counts": {
+    "applicants": 14,
+    "assets": 25,
+    "products": 4,
+    "coverageOptions": 13,
+    "riskFactors": 10,
+    "quotes": 27,
+    "policies": 12,
+    "endorsements": 2,
+    "renewals": 1,
+    "underwriting": 11,
+    "auditEvents": 63,
+    "anomalyLabels": 7
+  },
+  "anomalies": 7,
+  "skipped": [
+    {
+      "reason": "policy_issue_blocked",
+      "detail": "QTE-2026-00007: Asset already has live coverage (POL-2026-00002) for part of 2026-09-18..2027-09-18."
+    },
+    {
+      "reason": "policy_issue_blocked",
+      "detail": "QTE-2026-00015: Asset already has live coverage (POL-2026-00004) for part of 2026-02-04..2027-02-04."
+    },
+    {
+      "reason": "policy_issue_blocked",
+      "detail": "QTE-2026-00024: Asset already has live coverage (POL-2026-00009) for part of 2026-01-29..2027-01-29."
+    }
+  ],
+  "durationMs": 2458
+}

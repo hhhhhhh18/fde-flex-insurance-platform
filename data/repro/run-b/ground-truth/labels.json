@@ -1,0 +1,51 @@
+[
+  {
+    "anomalyCode": "ANOM_COVERAGE_LIMIT",
+    "description": "Coverage PRP-FIR raised to 2500000.00, above its maximum of 2000000.",
+    "entityRef": "QTE-2026-00026",
+    "entityType": "Quote",
+    "expectedIssue": "COV_LIMIT_EXCEEDED"
+  },
+  {
+    "anomalyCode": "ANOM_DATE_INVERSION",
+    "description": "Policy effectiveTo set 30 days before effectiveFrom.",
+    "entityRef": "POL-2026-00007",
+    "entityType": "Policy",
+    "expectedIssue": "DATE_ORDER_INVALID"
+  },
+  {
+    "anomalyCode": "ANOM_INVALID_RENEWAL",
+    "description": "Renewal offered for cancelled policy POL-2026-00001.",
+    "entityRef": "RNW-2026-00001",
+    "entityType": "Renewal",
+    "expectedIssue": "RNW_INVALID_RELATIONSHIP"
+  },
+  {
+    "anomalyCode": "ANOM_OVERLAPPING_POLICY",
+    "description": "Policy overlaps live coverage POL-2026-00002 for asset cmvrpsztf002dlifs713n40fe (2026-04-26..2026-08-24).",
+    "entityRef": "POL-2026-00012",
+    "entityType": "Policy",
+    "expectedIssue": "POL_OVERLAP"
+  },
+  {
+    "anomalyCode": "ANOM_PREMIUM_MISMATCH",
+    "description": "Gross premium inflated by 5% to 394.43 without re-running the pricing engine.",
+    "entityRef": "QTE-2026-00002",
+    "entityType": "Quote",
+    "expectedIssue": "PRM_FORMULA_MISMATCH"
+  },
+  {
+    "anomalyCode": "ANOM_RISK_INFO_IGNORED",
+    "description": "Risk questionnaire flagged incomplete while an ACTIVE policy remains in force without a data-quality decision.",
+    "entityRef": "AST-2026-00024",
+    "entityType": "InsuredAsset",
+    "expectedIssue": "DQ_RISK_INFO_MISSING"
+  },
+  {
+    "anomalyCode": "ANOM_UNAUTHORIZED_ISSUANCE",
+    "description": "Policy activated from a referred quote by the APPLICANT role with unpaid premium and no reviewer approval.",
+    "entityRef": "POL-2026-00011",
+    "entityType": "Policy",
+    "expectedIssue": "LIFECYCLE_INVALID"
+  }
+]

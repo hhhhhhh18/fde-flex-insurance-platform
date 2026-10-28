@@ -1,0 +1,129 @@
+[
+  {
+    "decidedAt": null,
+    "quoteRef": "QTE-2026-00001",
+    "reference": "UWD-2026-00001",
+    "reviewerRole": null,
+    "status": "PENDING",
+    "summary": "Total coverage 1170000.00 exceeds the auto-bind limit 750000. Credit band E triggered a referral (Lowest credit band is not eligible for straight-through processing.).",
+    "triggerCodes": [
+      "R_COVERAGE_ABOVE_AUTOBIND",
+      "R_FACTOR_CREDIT_E"
+    ]
+  },
+  {
+    "decidedAt": "2026-10-28",
+    "quoteRef": "QTE-2026-00004",
+    "reference": "UWD-2026-00002",
+    "reviewerRole": "RISK_REVIEWER",
+    "status": "APPROVED",
+    "summary": "Total coverage 575000.00 exceeds the auto-bind limit 400000.",
+    "triggerCodes": [
+      "R_COVERAGE_ABOVE_AUTOBIND"
+    ]
+  },
+  {
+    "decidedAt": null,
+    "quoteRef": "QTE-2026-00005",
+    "reference": "UWD-2026-00003",
+    "reviewerRole": null,
+    "status": "PENDING",
+    "summary": "Credit band E triggered a referral (Lowest credit band is not eligible for straight-through processing.).",
+    "triggerCodes": [
+      "R_FACTOR_CREDIT_E"
+    ]
+  },
+  {
+    "decidedAt": "2026-10-28",
+    "quoteRef": "QTE-2026-00011",
+    "reference": "UWD-2026-00004",
+    "reviewerRole": "RISK_REVIEWER",
+    "status": "APPROVED",
+    "summary": "Credit band E triggered a referral (Lowest credit band is not eligible for straight-through processing.).",
+    "triggerCodes": [
+      "R_FACTOR_CREDIT_E"
+    ]
+  },
+  {
+    "decidedAt": "2026-10-28",
+    "quoteRef": "QTE-2026-00012",
+    "reference": "UWD-2026-00005",
+    "reviewerRole": "RISK_REVIEWER",
+    "status": "APPROVED",
+    "summary": "Credit band E triggered a referral (Lowest credit band is not eligible for straight-through processing.).",
+    "triggerCodes": [
+      "R_FACTOR_CREDIT_E"
+    ]
+  },
+  {
+    "decidedAt": null,
+    "quoteRef": "QTE-2026-00016",
+    "reference": "UWD-2026-00006",
+    "reviewerRole": null,
+    "status": "PENDING",
+    "summary": "Credit band E triggered a referral (Lowest credit band is not eligible for straight-through processing.).",
+    "triggerCodes": [
+      "R_FACTOR_CREDIT_E"
+    ]
+  },
+  {
+    "decidedAt": null,
+    "quoteRef": "QTE-2026-00017",
+    "reference": "UWD-2026-00007",
+    "reviewerRole": null,
+    "status": "PENDING",
+    "summary": "Total coverage 263000.00 exceeds the auto-bind limit 250000.",
+    "triggerCodes": [
+      "R_COVERAGE_ABOVE_AUTOBIND"
+    ]
+  },
+  {
+    "decidedAt": "2026-10-28",
+    "quoteRef": "QTE-2026-00019",
+    "reference": "UWD-2026-00008",
+    "reviewerRole": "RISK_REVIEWER",
+    "status": "INFORMATION_REQUESTED",
+    "summary": "Three or more claims in 5 years triggered a referral (Persistent claims history requires human underwriting judgement.). Claims history of 4 claims in 5 years requires review.",
+    "triggerCodes": [
+      "R_FACTOR_CLAIMS_3",
+      "R_CLAIMS_HISTORY"
+    ]
+  },
+  {
+    "decidedAt": null,
+    "quoteRef": "QTE-2026-00020",
+    "reference": "UWD-2026-00009",
+    "reviewerRole": null,
+    "status": "PENDING",
+    "summary": "Total coverage 450000.00 exceeds the auto-bind limit 400000. Three or more claims in 5 years triggered a referral (Persistent claims history requires human underwriting judgement.). Claims history of 4 claims in 5 years requires review.",
+    "triggerCodes": [
+      "R_COVERAGE_ABOVE_AUTOBIND",
+      "R_FACTOR_CLAIMS_3",
+      "R_CLAIMS_HISTORY"
+    ]
+  },
+  {
+    "decidedAt": "2026-10-28",
+    "quoteRef": "QTE-2026-00022",
+    "reference": "UWD-2026-00010",
+    "reviewerRole": "RISK_REVIEWER",
+    "status": "APPROVED",
+    "summary": "Total coverage 273000.00 exceeds the auto-bind limit 250000.",
+    "triggerCodes": [
+      "R_COVERAGE_ABOVE_AUTOBIND"
+    ]
+  },
+  {
+    "decidedAt": null,
+    "quoteRef": "QTE-2026-00023",
+    "reference": "UWD-2026-00011",
+    "reviewerRole": null,
+    "status": "PENDING",
+    "summary": "Total coverage 440000.00 exceeds the auto-bind limit 400000. Three or more claims in 5 years triggered a referral (Persistent claims history requires human underwriting judgement.). Claims history of 4 claims in 5 years requires review.",
+    "triggerCodes": [
+      "R_COVERAGE_ABOVE_AUTOBIND",
+      "R_FACTOR_CLAIMS_3",
+      "R_CLAIMS_HISTORY"
+    ]
+  }
+]

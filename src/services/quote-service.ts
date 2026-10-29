@@ -1,3 +1,4 @@
+
 import type { Prisma } from "@prisma/client";
 import { prisma } from "@/lib/db";
 import { assertAuthorized, type Role } from "@/lib/authz";
@@ -43,86 +44,89 @@ export async function evaluateQuote(raw: QuoteEvaluateInput, actor: Actor): Prom
 
   const result = priceQuote(context.input);
 
-  return prisma.$transaction(async (tx) => {
-    const reference = await nextReference(tx, "QTE", new Date(asOf));
+  return prisma.$transaction(
+    async (tx) => {
+      const reference = await nextReference(tx, "QTE", new Date(asOf));
 
-    const quote = await tx.quote.create({
-      data: {
-        reference,
-        applicantId: context.records.applicant.id,
-        productId: context.records.product.id,
-        assetId: context.records.asset?.id ?? null,
-        status: "EVALUATED",
-        decision: result.decision,
-        decisionSummary: summarize(result.decision, result.reasons),
-        referralReasons: result.referrals as unknown as Prisma.InputJsonValue,
-        pricingBreakdown: {
-          ...result.breakdown,
-          inputSnapshot: result.inputSnapshot,
-        } as unknown as Prisma.InputJsonValue,
-        coverageLimit: result.totalCoverageLimit,
-        netPremium: result.breakdown.netPremium,
-        grossPremium: result.breakdown.grossPremium,
-        factorProduct: result.breakdown.factorProduct,
-        pricingVersion: result.breakdown.pricingVersion,
-        rulesVersion: result.breakdown.rulesVersion,
-        evaluatedAt: new Date(asOf),
-        expiresAt: new Date(addDays(asOf, 30)),
-        coverages: {
-          create: result.coverages.map((line) => ({
-            coverageOptionId: context.ids.coverageOptions[line.code]!,
-            requestedLimit: line.requestedLimit,
-            approvedLimit: line.approvedLimit,
-            rateFactor: line.rateFactor,
-            limitViolation: line.limitStatus !== "OK",
-          })),
-        },
-        riskFactors: {
-          create: result.breakdown.factors
-            .filter((f) => context.ids.riskFactors[f.code])
-            .map((f) => ({
-              riskFactorId: context.ids.riskFactors[f.code]!,
-              observedValue: f.observed,
-              multiplier: f.multiplier,
-              referred: f.triggersReferral,
-            })),
-        },
-      },
-      include: quoteInclude,
-    });
-
-    if (result.decision === "REFERRED") {
-      await tx.underwritingDecision.create({
+      const quote = await tx.quote.create({
         data: {
-          reference: await nextReference(tx, "UWD", new Date(asOf)),
-          quoteId: quote.id,
-          status: "PENDING",
-          triggerCodes: result.referrals.map((r) => r.code) as unknown as Prisma.InputJsonValue,
-          summary: result.referrals.map((r) => r.message).join(" "),
+          reference,
+          applicantId: context.records.applicant.id,
+          productId: context.records.product.id,
+          assetId: context.records.asset?.id ?? null,
+          status: "EVALUATED",
+          decision: result.decision,
+          decisionSummary: summarize(result.decision, result.reasons),
+          referralReasons: result.referrals as unknown as Prisma.InputJsonValue,
+          pricingBreakdown: {
+            ...result.breakdown,
+            inputSnapshot: result.inputSnapshot,
+          } as unknown as Prisma.InputJsonValue,
+          coverageLimit: result.totalCoverageLimit,
+          netPremium: result.breakdown.netPremium,
+          grossPremium: result.breakdown.grossPremium,
+          factorProduct: result.breakdown.factorProduct,
+          pricingVersion: result.breakdown.pricingVersion,
+          rulesVersion: result.breakdown.rulesVersion,
+          evaluatedAt: new Date(asOf),
+          expiresAt: new Date(addDays(asOf, 30)),
+          coverages: {
+            create: result.coverages.map((line) => ({
+              coverageOptionId: context.ids.coverageOptions[line.code]!,
+              requestedLimit: line.requestedLimit,
+              approvedLimit: line.approvedLimit,
+              rateFactor: line.rateFactor,
+              limitViolation: line.limitStatus !== "OK",
+            })),
+          },
+          riskFactors: {
+            create: result.breakdown.factors
+              .filter((f) => context.ids.riskFactors[f.code])
+              .map((f) => ({
+                riskFactorId: context.ids.riskFactors[f.code]!,
+                observedValue: f.observed,
+                multiplier: f.multiplier,
+                referred: f.triggersReferral,
+              })),
+          },
+        },
+        include: quoteInclude,
+      });
+
+      if (result.decision === "REFERRED") {
+        await tx.underwritingDecision.create({
+          data: {
+            reference: await nextReference(tx, "UWD", new Date(asOf)),
+            quoteId: quote.id,
+            status: "PENDING",
+            triggerCodes: result.referrals.map((r) => r.code) as unknown as Prisma.InputJsonValue,
+            summary: result.referrals.map((r) => r.message).join(" "),
+          },
+        });
+      }
+
+      await recordAudit(tx, {
+        entityType: "Quote",
+        entityId: quote.id,
+        entityRef: quote.reference,
+        action: "QUOTE_EVALUATED",
+        actorRole: actor.role,
+        actorId: actor.actorId,
+        summary: `Quote ${quote.reference} evaluated: ${result.decision} at ${result.breakdown.grossPremium}.`,
+        payload: {
+          decision: result.decision,
+          grossPremium: result.breakdown.grossPremium,
+          factorProduct: result.breakdown.factorProduct,
+          referrals: result.referrals.map((r) => r.code),
+          pricingVersion: result.breakdown.pricingVersion,
+          rulesVersion: result.breakdown.rulesVersion,
         },
       });
-    }
 
-    await recordAudit(tx, {
-      entityType: "Quote",
-      entityId: quote.id,
-      entityRef: quote.reference,
-      action: "QUOTE_EVALUATED",
-      actorRole: actor.role,
-      actorId: actor.actorId,
-      summary: `Quote ${quote.reference} evaluated: ${result.decision} at ${result.breakdown.grossPremium}.`,
-      payload: {
-        decision: result.decision,
-        grossPremium: result.breakdown.grossPremium,
-        factorProduct: result.breakdown.factorProduct,
-        referrals: result.referrals.map((r) => r.code),
-        pricingVersion: result.breakdown.pricingVersion,
-        rulesVersion: result.breakdown.rulesVersion,
-      },
-    });
-
-    return tx.quote.findUniqueOrThrow({ where: { id: quote.id }, include: quoteInclude });
-  });
+      return tx.quote.findUniqueOrThrow({ where: { id: quote.id }, include: quoteInclude });
+    },
+    { maxWait: 10000, timeout: 30000 },
+  );
 }
 
 function summarize(decision: string, reasons: { message: string }[]): string {

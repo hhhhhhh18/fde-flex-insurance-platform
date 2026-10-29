@@ -162,6 +162,30 @@ export async function seedMasterData() {
   return { productByCode };
 }
 
+/** Quote attempts allowed per missing quote before the run gives up and reports a shortfall. */
+const QUOTE_ATTEMPT_MULTIPLIER = 3;
+
+/**
+ * Fixed reason text on every generator-created endorsement. It doubles as a fingerprint so a
+ * rerun can recognise which policies the generator has already endorsed.
+ */
+const GENERATOR_ENDORSEMENT_REASON = "Insured requested increased limit following asset revaluation.";
+
+/**
+ * Highest numeric suffix among references that start with `prefix`
+ * (e.g. "APP-2026-" -> 140). Used so new references continue after the
+ * largest existing one instead of assuming references are contiguous.
+ */
+function maxReferenceNumber(references: string[], prefix: string): number {
+  let max = 0;
+  for (const reference of references) {
+    if (!reference.startsWith(prefix)) continue;
+    const n = Number.parseInt(reference.slice(prefix.length), 10);
+    if (Number.isFinite(n) && n > max) max = n;
+  }
+  return max;
+}
+
 export async function generateDataset(options: GenerationOptions): Promise<GenerationSummary> {
   const started = Date.now();
   const rng = new SeededRng(options.seed);
@@ -172,16 +196,30 @@ export async function generateDataset(options: GenerationOptions): Promise<Gener
   if (options.reset) await resetDataset();
   const { productByCode } = await seedMasterData();
 
-  const existing = await prisma.applicant.count();
-  if (existing > 0 && !options.reset) {
+  const existingApplicants = await prisma.applicant.count();
+
+  if (existingApplicants > size.applicants && !options.reset) {
     throw new Error(
-      `Database already contains ${existing} applicants. Re-run with --reset or use a clean database.`,
+      `Database contains ${existingApplicants} applicants, exceeding the target of ${size.applicants}.`,
     );
   }
 
   // ---------- Applicants ----------
-  const applicantRecords: { id: string; reference: string }[] = [];
-  for (let i = 1; i <= size.applicants; i++) {
+  // Existing applicants are loaded and reused; only the missing ones are created.
+  const applicantRecords: { id: string; reference: string }[] = await prisma.applicant.findMany({
+    select: { id: true, reference: true },
+    orderBy: { reference: "asc" },
+  });
+
+  // Continue numbering after the highest existing reference so new references cannot collide.
+  let applicantCounter = maxReferenceNumber(
+    applicantRecords.map((a) => a.reference),
+    `APP-${ANCHOR_YEAR}-`,
+  );
+
+  while (applicantRecords.length < size.applicants) {
+    applicantCounter += 1;
+    const i = applicantCounter;
     const first = rng.pick(FIRST_NAMES);
     const last = rng.pick(LAST_NAMES);
     const age = rng.triangular(22, 74, 40);
@@ -206,13 +244,37 @@ export async function generateDataset(options: GenerationOptions): Promise<Gener
         creditBand,
       },
     });
-    applicantRecords.push(created);
+    applicantRecords.push({ id: created.id, reference: created.reference });
   }
 
   // ---------- Assets ----------
-  const assetRecords: { id: string; reference: string; applicantId: string; assetType: string; currentValue: string }[] = [];
-  let assetCounter = 0;
+  // Existing assets are loaded and reused; assets are created only for applicants that have none.
+  const assetRecords: {
+    id: string;
+    reference: string;
+    applicantId: string;
+    assetType: string;
+    currentValue: Prisma.Decimal;
+  }[] = await prisma.insuredAsset.findMany({
+    select: {
+      id: true,
+      reference: true,
+      applicantId: true,
+      assetType: true,
+      currentValue: true,
+    },
+    orderBy: { reference: "asc" },
+  });
+
+  // Continue numbering after the highest existing reference so new references cannot collide.
+  let assetCounter = maxReferenceNumber(
+    assetRecords.map((a) => a.reference),
+    `AST-${ANCHOR_YEAR}-`,
+  );
+  const applicantsWithAssets = new Set(assetRecords.map((asset) => asset.applicantId));
+
   for (const applicant of applicantRecords) {
+    if (applicantsWithAssets.has(applicant.id)) continue;
     const count = rng.weighted([
       { value: 1, weight: 40 },
       { value: 2, weight: 40 },
@@ -261,7 +323,7 @@ export async function generateDataset(options: GenerationOptions): Promise<Gener
         reference: created.reference,
         applicantId: created.applicantId,
         assetType: created.assetType,
-        currentValue: created.currentValue.toString(),
+        currentValue: created.currentValue,
       });
     }
   }
@@ -274,10 +336,16 @@ export async function generateDataset(options: GenerationOptions): Promise<Gener
   }
 
   // ---------- Quotes (priced by the real engine) ----------
-  const productCodes = ["MOT-FLEET", "PROP-SHIELD", "CYB-GUARD", "LIA-FLEX"];
-  const quoteRecords: { id: string; reference: string; decision: string }[] = [];
+  // `size.quotes` is the desired TOTAL. The loop re-counts quotes from the database after
+  // every attempt, so failed evaluations never count towards the target, and the number of
+  // attempts is bounded so persistent failures cannot loop forever.
+  let currentQuotes = await prisma.quote.count();
+  const startingQuotes = currentQuotes;
+  const maxQuoteAttempts = Math.max(0, size.quotes - currentQuotes) * QUOTE_ATTEMPT_MULTIPLIER;
+  let quoteAttempts = 0;
 
-  for (let q = 0; q < size.quotes; q++) {
+  while (currentQuotes < size.quotes && quoteAttempts < maxQuoteAttempts) {
+    quoteAttempts += 1;
     const productCode = rng.weighted([
       { value: "MOT-FLEET", weight: 34 },
       { value: "PROP-SHIELD", weight: 28 },
@@ -290,6 +358,14 @@ export async function generateDataset(options: GenerationOptions): Promise<Gener
     const candidates = applicantRecords.filter((app) =>
       (assetsByApplicant.get(app.id) ?? []).some((asset) => allowedAssets.includes(asset.assetType)),
     );
+    // Only LIABILITY quotes may proceed without a compatible asset; other products need one.
+    if (candidates.length === 0 && product.category !== "LIABILITY") {
+      skipped.push({
+        reason: "no_compatible_asset",
+        detail: `attempt ${quoteAttempts}: no applicant has an asset compatible with ${product.code}`,
+      });
+      continue;
+    }
     const applicant = rng.pick(candidates.length > 0 ? candidates : applicantRecords);
     const compatible = (assetsByApplicant.get(applicant.id) ?? []).filter((asset) =>
       allowedAssets.includes(asset.assetType),
@@ -318,12 +394,12 @@ export async function generateDataset(options: GenerationOptions): Promise<Gener
       });
 
     if (coverages.length === 0) {
-      skipped.push({ reason: "no_coverage_selected", detail: `quote index ${q}` });
+      skipped.push({ reason: "no_coverage_selected", detail: `quote attempt ${quoteAttempts}` });
       continue;
     }
 
     try {
-      const quote = await evaluateQuote(
+      await evaluateQuote(
         {
           applicantId: applicant.id,
           productId: product.id,
@@ -333,13 +409,21 @@ export async function generateDataset(options: GenerationOptions): Promise<Gener
         },
         generatorActor,
       );
-      quoteRecords.push({ id: quote.id, reference: quote.reference, decision: quote.decision });
     } catch (error) {
       skipped.push({
         reason: "quote_evaluation_failed",
-        detail: error instanceof Error ? error.message : String(error),
+        detail: `attempt ${quoteAttempts}: ${error instanceof Error ? error.message : String(error)}`,
       });
     }
+    currentQuotes = await prisma.quote.count();
+  }
+
+  currentQuotes = await prisma.quote.count();
+  if (currentQuotes < size.quotes) {
+    skipped.push({
+      reason: "quote_target_shortfall",
+      detail: `Target ${size.quotes} quotes, database has ${currentQuotes} (started at ${startingQuotes}) after ${quoteAttempts} of ${maxQuoteAttempts} allowed attempts.`,
+    });
   }
 
   // ---------- Underwriting outcomes for referred quotes ----------
@@ -445,8 +529,26 @@ export async function generateDataset(options: GenerationOptions): Promise<Gener
     orderBy: { reference: "asc" },
   });
 
+  // The schema allows several endorsements per policy, but the generator creates at most one.
+  // Policies that already carry a generator endorsement are skipped so a rerun cannot add a second.
+  const alreadyEndorsed = new Set(
+    (
+      await prisma.endorsement.findMany({
+        where: { policyId: { in: activePolicies.map((p) => p.id) }, reason: GENERATOR_ENDORSEMENT_REASON },
+        select: { policyId: true },
+      })
+    ).map((e) => e.policyId),
+  );
+  if (alreadyEndorsed.size > 0) {
+    skipped.push({
+      reason: "endorsement_already_generated",
+      detail: `${alreadyEndorsed.size} active policies already have a generator endorsement.`,
+    });
+  }
+
   let endorsements = 0;
   for (const policy of activePolicies) {
+    if (alreadyEndorsed.has(policy.id)) continue;
     if (!rng.bool(0.22)) continue;
     const coverage = policy.quote.coverages[0]?.coverageOption;
     if (!coverage) continue;
@@ -465,7 +567,7 @@ export async function generateDataset(options: GenerationOptions): Promise<Gener
           policyId: policy.id,
           type: "LIMIT_CHANGE",
           effectiveDate,
-          reason: "Insured requested increased limit following asset revaluation.",
+          reason: GENERATOR_ENDORSEMENT_REASON,
           newLimit: newLimit.toFixed(2),
           coverageCode: coverage.code,
         },
@@ -490,8 +592,27 @@ export async function generateDataset(options: GenerationOptions): Promise<Gener
     orderBy: { reference: "asc" },
   });
 
+  // generateRenewal already rejects a policy with an OFFERED or ACCEPTED renewal, but it would
+  // accept a fresh offer after a DECLINED or EXPIRED one. The generator makes one renewal attempt
+  // per policy, so any policy that already has a renewal is skipped.
+  const alreadyRenewalProcessed = new Set(
+    (
+      await prisma.renewal.findMany({
+        where: { policyId: { in: renewable.map((p) => p.id) } },
+        select: { policyId: true },
+      })
+    ).map((r) => r.policyId),
+  );
+  if (alreadyRenewalProcessed.size > 0) {
+    skipped.push({
+      reason: "renewal_already_generated",
+      detail: `${alreadyRenewalProcessed.size} renewable policies already have a renewal.`,
+    });
+  }
+
   let renewals = 0;
   for (const policy of renewable) {
+    if (alreadyRenewalProcessed.has(policy.id)) continue;
     const daysToExpiry = Math.round(
       (dateOnly(policy.effectiveTo.toISOString().slice(0, 10)).getTime() - anchor.getTime()) / 86_400_000,
     );
@@ -520,9 +641,20 @@ export async function generateDataset(options: GenerationOptions): Promise<Gener
   }
 
   // ---------- Anomalies ----------
-  const anomalies = options.includeAnomalies
-    ? await seedAnomalies({ rng, datasetLabel: options.datasetLabel, anchor })
-    : 0;
+  // seedAnomalies mutates existing rows and creates new ones on every call (it is not idempotent),
+  // and it writes its labels only at the end. Seed it at most once per database.
+  let anomalies = 0;
+  if (options.includeAnomalies) {
+    const existingLabels = await prisma.anomalyLabel.count();
+    if (existingLabels > 0) {
+      skipped.push({
+        reason: "anomalies_already_seeded",
+        detail: `${existingLabels} anomaly labels already exist; anomaly injection skipped.`,
+      });
+    } else {
+      anomalies = await seedAnomalies({ rng, datasetLabel: options.datasetLabel, anchor });
+    }
+  }
 
   const counts: Record<string, number> = {
     applicants: await prisma.applicant.count(),

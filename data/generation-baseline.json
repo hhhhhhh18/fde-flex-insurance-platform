@@ -1,36 +1,184 @@
 {
   "seed": 20261001,
-  "scale": "small",
+  "scale": "full",
   "datasetLabel": "baseline",
   "anchor": "2026-10-01T00:00:00.000Z",
   "counts": {
-    "applicants": 14,
-    "assets": 25,
+    "applicants": 140,
+    "assets": 253,
     "products": 4,
     "coverageOptions": 13,
     "riskFactors": 10,
-    "quotes": 27,
-    "policies": 12,
-    "endorsements": 2,
-    "renewals": 1,
-    "underwriting": 11,
-    "auditEvents": 63,
-    "anomalyLabels": 7
+    "quotes": 344,
+    "policies": 135,
+    "endorsements": 17,
+    "renewals": 17,
+    "underwriting": 130,
+    "auditEvents": 822,
+    "anomalyLabels": 0
   },
-  "anomalies": 7,
+  "anomalies": 0,
   "skipped": [
     {
       "reason": "policy_issue_blocked",
-      "detail": "QTE-2026-00007: Asset already has live coverage (POL-2026-00002) for part of 2026-09-18..2027-09-18."
+      "detail": "QTE-2026-00043: Asset already has live coverage (POL-2026-00014) for part of 2026-04-05..2027-04-05."
     },
     {
       "reason": "policy_issue_blocked",
-      "detail": "QTE-2026-00015: Asset already has live coverage (POL-2026-00004) for part of 2026-02-04..2027-02-04."
+      "detail": "QTE-2026-00086: Asset already has live coverage (POL-2026-00019) for part of 2026-02-21..2027-02-21."
     },
     {
       "reason": "policy_issue_blocked",
-      "detail": "QTE-2026-00024: Asset already has live coverage (POL-2026-00009) for part of 2026-01-29..2027-01-29."
+      "detail": "QTE-2026-00102: Asset already has live coverage (POL-2026-00014) for part of 2026-03-25..2027-03-25."
+    },
+    {
+      "reason": "policy_issue_blocked",
+      "detail": "QTE-2026-00103: Asset already has live coverage (POL-2026-00029) for part of 2025-12-19..2026-12-19."
+    },
+    {
+      "reason": "policy_issue_blocked",
+      "detail": "QTE-2026-00104: Asset already has live coverage (POL-2026-00047) for part of 2025-12-29..2026-12-29."
+    },
+    {
+      "reason": "policy_issue_blocked",
+      "detail": "QTE-2026-00113: Asset already has live coverage (POL-2026-00013) for part of 2026-01-17..2027-01-17."
+    },
+    {
+      "reason": "policy_issue_blocked",
+      "detail": "QTE-2026-00123: Asset already has live coverage (POL-2026-00012) for part of 2025-12-23..2026-12-23."
+    },
+    {
+      "reason": "policy_issue_blocked",
+      "detail": "QTE-2026-00131: Asset already has live coverage (POL-2026-00047) for part of 2026-08-12..2027-08-12."
+    },
+    {
+      "reason": "policy_issue_blocked",
+      "detail": "QTE-2026-00145: Asset already has live coverage (POL-2026-00053) for part of 2026-07-08..2027-07-08."
+    },
+    {
+      "reason": "policy_issue_blocked",
+      "detail": "QTE-2026-00151: Asset already has live coverage (POL-2026-00057) for part of 2026-04-17..2027-04-17."
+    },
+    {
+      "reason": "policy_issue_blocked",
+      "detail": "QTE-2026-00155: Asset already has live coverage (POL-2026-00058) for part of 2025-12-07..2026-12-07."
+    },
+    {
+      "reason": "policy_issue_blocked",
+      "detail": "QTE-2026-00160: Asset already has live coverage (POL-2026-00018) for part of 2025-12-29..2026-12-29."
+    },
+    {
+      "reason": "policy_issue_blocked",
+      "detail": "QTE-2026-00184: Asset already has live coverage (POL-2026-00030) for part of 2025-04-27..2026-04-27."
+    },
+    {
+      "reason": "policy_issue_blocked",
+      "detail": "QTE-2026-00185: Asset already has live coverage (POL-2026-00076) for part of 2026-09-26..2027-09-26."
+    },
+    {
+      "reason": "policy_issue_blocked",
+      "detail": "QTE-2026-00197: Asset already has live coverage (POL-2026-00030) for part of 2026-06-17..2027-06-17."
+    },
+    {
+      "reason": "policy_issue_blocked",
+      "detail": "QTE-2026-00198: Asset already has live coverage (POL-2026-00067) for part of 2026-06-18..2027-06-18."
+    },
+    {
+      "reason": "policy_issue_blocked",
+      "detail": "QTE-2026-00224: Asset already has live coverage (POL-2026-00014) for part of 2026-07-29..2027-07-29."
+    },
+    {
+      "reason": "policy_issue_blocked",
+      "detail": "QTE-2026-00225: Asset already has live coverage (POL-2026-00031) for part of 2026-08-26..2027-08-26."
+    },
+    {
+      "reason": "policy_issue_blocked",
+      "detail": "QTE-2026-00234: Asset already has live coverage (POL-2026-00010) for part of 2025-12-06..2026-12-06."
+    },
+    {
+      "reason": "policy_issue_blocked",
+      "detail": "QTE-2026-00236: Asset already has live coverage (POL-2026-00019) for part of 2026-06-04..2027-06-04."
+    },
+    {
+      "reason": "policy_issue_blocked",
+      "detail": "QTE-2026-00243: Asset already has live coverage (POL-2026-00031) for part of 2026-01-23..2027-01-23."
+    },
+    {
+      "reason": "policy_issue_blocked",
+      "detail": "QTE-2026-00249: Asset already has live coverage (POL-2026-00097) for part of 2026-06-10..2027-06-10."
+    },
+    {
+      "reason": "policy_issue_blocked",
+      "detail": "QTE-2026-00251: Asset already has live coverage (POL-2026-00082) for part of 2026-03-08..2027-03-08."
+    },
+    {
+      "reason": "policy_issue_blocked",
+      "detail": "QTE-2026-00254: Asset already has live coverage (POL-2026-00107) for part of 2026-08-29..2027-08-29."
+    },
+    {
+      "reason": "policy_issue_blocked",
+      "detail": "QTE-2026-00259: Asset already has live coverage (POL-2026-00099) for part of 2026-08-01..2027-08-01."
+    },
+    {
+      "reason": "policy_issue_blocked",
+      "detail": "QTE-2026-00260: Asset already has live coverage (POL-2026-00023) for part of 2026-01-07..2027-01-07."
+    },
+    {
+      "reason": "policy_issue_blocked",
+      "detail": "QTE-2026-00261: Asset already has live coverage (POL-2026-00107) for part of 2026-06-10..2027-06-10."
+    },
+    {
+      "reason": "policy_issue_blocked",
+      "detail": "QTE-2026-00270: Asset already has live coverage (POL-2026-00093) for part of 2026-01-17..2027-01-17."
+    },
+    {
+      "reason": "policy_issue_blocked",
+      "detail": "QTE-2026-00272: Asset already has live coverage (POL-2026-00099) for part of 2026-07-18..2027-07-18."
+    },
+    {
+      "reason": "policy_issue_blocked",
+      "detail": "QTE-2026-00277: Asset already has live coverage (POL-2026-00076) for part of 2025-03-20..2026-03-20."
+    },
+    {
+      "reason": "policy_issue_blocked",
+      "detail": "QTE-2026-00289: Asset already has live coverage (POL-2026-00050) for part of 2026-03-30..2027-03-30."
+    },
+    {
+      "reason": "policy_issue_blocked",
+      "detail": "QTE-2026-00302: Asset already has live coverage (POL-2026-00027) for part of 2025-12-05..2026-12-05."
+    },
+    {
+      "reason": "policy_issue_blocked",
+      "detail": "QTE-2026-00305: Asset already has live coverage (POL-2026-00010) for part of 2026-09-15..2027-09-15."
+    },
+    {
+      "reason": "policy_issue_blocked",
+      "detail": "QTE-2026-00314: Asset already has live coverage (POL-2026-00098) for part of 2026-08-02..2027-08-02."
+    },
+    {
+      "reason": "policy_issue_blocked",
+      "detail": "QTE-2026-00332: Asset already has live coverage (POL-2026-00014) for part of 2026-03-11..2027-03-11."
+    },
+    {
+      "reason": "policy_issue_blocked",
+      "detail": "QTE-2026-00333: Asset already has live coverage (POL-2026-00018) for part of 2026-03-24..2027-03-24."
+    },
+    {
+      "reason": "policy_issue_blocked",
+      "detail": "QTE-2026-00335: Asset already has live coverage (POL-2026-00053) for part of 2026-07-01..2027-07-01."
+    },
+    {
+      "reason": "policy_issue_blocked",
+      "detail": "QTE-2026-00337: Asset already has live coverage (POL-2026-00096) for part of 2026-09-20..2027-09-20."
+    },
+    {
+      "reason": "endorsement_skipped",
+      "detail": "POL-2026-00054: Endorsement rejected by eligibility rules: Total requested coverage 507000.00 exceeds the product maximum 500000.00."
+    },
+    {
+      "reason": "renewal_skipped",
+      "detail": "POL-2026-00128: Renewal period overlaps existing policy POL-2026-00009; resolve the coverage conflict first."
     }
   ],
-  "durationMs": 2435
+  "durationMs": 322712
 }
